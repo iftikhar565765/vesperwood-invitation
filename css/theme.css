@@ -1,0 +1,287 @@
+/* ═══════════════════════════════════════════════════════════════
+   VESPERWOOD · theme.css — the Aldergrove dawn skin
+   ---------------------------------------------------------------
+   The hero is a dawn sky over the Registan — lapis into turquoise
+   into saffron — with the turquoise dome rising behind a pishtaq
+   arch of glazed tile. Bands are lagoons of girih tilework; the
+   page is ivory silk. This file re-skins every scene on top of
+   the shared base CSS.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── 1 · the ivory silk world ─────────────────────────────────── */
+
+body {
+  background:
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--ivory) 96%, var(--champagne) 4%) 0%,
+      var(--ivory) 100%);
+}
+
+/* film grain — the whole page is one cinematic frame */
+.grain {
+  position: fixed;
+  inset: -50%;
+  z-index: 9990;
+  pointer-events: none;
+  opacity: .04;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain-shift 1.4s steps(4) infinite;
+}
+@keyframes grain-shift {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-1.2%, .8%); }
+  50% { transform: translate(.9%, -1.1%); }
+  75% { transform: translate(-.6%, -.7%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ── 2 · the opening — silk-road envelope ─────────────────────── */
+
+.opening {
+  background:
+    radial-gradient(120% 70% at 50% -10%, color-mix(in srgb, var(--crimson) 22%, transparent) 0%, transparent 58%),
+    radial-gradient(90% 46% at 50% 112%, color-mix(in srgb, var(--champagne) 14%, transparent) 0%, transparent 66%),
+    linear-gradient(180deg, var(--night) 0%, var(--night-deep) 100%);
+}
+
+/* the flap liner is turquoise glaze with a fine gold lattice */
+.envelope__flap-liner {
+  background:
+    radial-gradient(130% 110% at 50% 0%, rgba(216, 236, 230, .3), transparent 62%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Cg fill='none' stroke='%23D2A447' stroke-opacity='.55'%3E%3Cpath d='M 22 4 L 26.6 15.4 L 38 20 L 26.6 24.6 L 22 36 L 17.4 24.6 L 6 20 L 17.4 15.4 Z'/%3E%3Ccircle cx='22' cy='20' r='2.2'/%3E%3Cpath d='M 0 20 H 6 M 38 20 H 44 M 22 0 V 4 M 22 36 V 40'/%3E%3C/g%3E%3C/svg%3E"),
+    linear-gradient(184deg,
+      color-mix(in srgb, var(--night) 84%, var(--champagne) 16%) 0%,
+      color-mix(in srgb, var(--night-deep) 88%, var(--burgundy) 12%) 100%);
+}
+
+/* ── 3 · the hero — dawn over the Registan ────────────────────── */
+
+.scene--hero {
+  background:
+    radial-gradient(70% 34% at 50% 100%, color-mix(in srgb, var(--champagne) 26%, transparent) 0%, transparent 62%),
+    linear-gradient(180deg,
+      var(--night-deep) 0%,
+      var(--night) 30%,
+      color-mix(in srgb, var(--burgundy) 74%, var(--night) 26%) 56%,
+      color-mix(in srgb, var(--champagne) 30%, var(--burgundy) 70%) 78%,
+      color-mix(in srgb, var(--champagne) 52%, #F7EBCE 48%) 100%);
+}
+
+/* dawn vignette around the whole stage */
+.scene--hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(120% 90% at 50% 42%, transparent 52%, color-mix(in srgb, #06120E 44%, transparent) 100%);
+}
+
+/* the glazed dome reads as the rising sun disc over the iwan */
+.noor-stage__shamsa {
+  filter: drop-shadow(0 0 34px color-mix(in srgb, var(--champagne) 26%, transparent));
+}
+
+/* drifting light motes — dawn pollen over the tiles */
+.noor-stage__mote {
+  background: radial-gradient(circle, var(--gold-bright) 0%, transparent 70%);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--champagne) 55%, transparent);
+}
+
+/* ── 5 · the vesperwood typography ───────────────────────────────── */
+
+.display,
+.arch-card__title,
+.venue-title {
+  font-family: var(--font-display);
+  letter-spacing: .08em;
+}
+
+.kicker {
+  font-family: var(--font-ui);
+  letter-spacing: .42em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.kicker--ink { color: var(--gold-ink); }
+.kicker--light { color: var(--gold-bright); }
+
+.script--names,
+.opening__names,
+.envelope__letter-names { font-family: var(--font-script); }
+
+.count-clock strong,
+.std-numerals,
+.envelope__letter-date { font-family: var(--font-display); letter-spacing: .12em; }
+
+/* on dark grounds the saffron voices are safe */
+.scene--ayat .display,
+.scene--countdown .display,
+.scene--closing .display,
+.scene--itinerary .display { color: var(--gold-bright); }
+
+/* a slow light sweep across the dark-band display titles */
+.scene--countdown .count-script em,
+.scene--itinerary .display .script,
+.scene--ayat .ayat-title {
+  background: linear-gradient(100deg,
+    var(--gold-bright) 30%,
+    #F5E7BF 46%,
+    var(--gold-bright) 62%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: name-shimmer 7s ease-in-out 1.6s infinite;
+}
+@keyframes name-shimmer {
+  0%, 100% { background-position: 12% 0; }
+  50% { background-position: 88% 0; }
+}
+
+/* ── 6 · contrast law — the ground decides the ink ──────────────
+   The page is ivory silk; the four lagoon chambers carry light. */
+
+/* deep gold kickers on paper, saffron kickers on the lagoons */
+.scene--story .kicker,
+.scene--std .kicker,
+.scene--details .kicker,
+.scene--palette .kicker,
+.scene--venue .kicker,
+.scene--rsvp .kicker { color: var(--gold-ink); }
+.scene--story .kicker::before, .scene--story .kicker::after,
+.scene--std .kicker::before, .scene--std .kicker::after,
+.scene--details .kicker::before, .scene--details .kicker::after,
+.scene--palette .kicker::before, .scene--palette .kicker::after,
+.scene--venue .kicker::before, .scene--venue .kicker::after,
+.scene--rsvp .kicker::before, .scene--rsvp .kicker::after { border-color: var(--gold-line); }
+
+.scene--ayat .kicker,
+.scene--itinerary .kicker,
+.scene--countdown .kicker,
+.scene--closing .kicker { color: var(--champagne); }
+
+.scene--story .prose,
+.scene--details .prose,
+.scene--palette .prose,
+.scene--venue .prose,
+.scene--rsvp .prose,
+.scene--std .prose { color: var(--ink); }
+
+/* ── 7 · the mini ayat — a small Amiri plate under the story ──── */
+
+.mini-ayat {
+  margin: clamp(1.6rem, 4vh, 2.4rem) auto 0;
+  max-width: 34rem;
+  padding: clamp(1.1rem, 3vh, 1.6rem) clamp(1.2rem, 3.4vw, 1.9rem);
+  background:
+    linear-gradient(180deg, var(--paper-raised) 0%, var(--parchment) 100%);
+  border: 1px solid color-mix(in srgb, var(--champagne) 44%, transparent);
+  box-shadow: var(--shadow-soft);
+}
+.mini-ayat__ar {
+  margin: 0;
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: clamp(1.25rem, 3vw, 1.6rem);
+  line-height: 1.8;
+  color: var(--ink);
+}
+.mini-ayat__en {
+  margin: .7rem 0 0;
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: clamp(.98rem, 2vw, 1.08rem);
+  color: var(--ink-soft);
+}
+.mini-ayat__ref {
+  margin: .55rem 0 0;
+  color: var(--gold-ink);
+}
+
+/* ── 8 · motion — filmic reveals ──────────────────────────────── */
+
+.reveal {
+  transition:
+    opacity .9s var(--ease),
+    transform 1.15s var(--ease);
+}
+.scene-body .reveal:nth-child(2) { transition-delay: .08s; }
+.scene-body .reveal:nth-child(3) { transition-delay: .16s; }
+.scene-body .reveal:nth-child(4) { transition-delay: .24s; }
+.scene-body .reveal:nth-child(5) { transition-delay: .3s; }
+
+.noor-stage__lantern,
+.opening__lantern { animation-duration: 9.5s; }
+
+/* buttons — burnished saffron on lagoon */
+.btn {
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  font-family: var(--font-ui);
+  font-weight: 600;
+}
+.btn--emerald,
+.btn--primary {
+  background: linear-gradient(165deg, var(--gold-bright) 0%, var(--champagne) 48%, var(--champagne-soft) 100%);
+  color: var(--night-deep);
+  border: 1px solid color-mix(in srgb, var(--champagne-soft) 60%, transparent);
+  box-shadow: 0 10px 26px -12px color-mix(in srgb, var(--night-deep) 56%, transparent);
+}
+.btn--emerald:hover,
+.btn--primary:hover { filter: brightness(1.06); }
+.btn--ghost {
+  border: 1px solid color-mix(in srgb, var(--champagne) 52%, transparent);
+  color: var(--gold-bright);
+  background: transparent;
+}
+.btn--goldline {
+  border: 1px solid color-mix(in srgb, var(--gold-ink) 60%, transparent);
+  color: var(--gold-ink);
+  background: transparent;
+}
+
+/* ── 9 · details — the caravanserai's hardware ────────────────── */
+
+.ayat-plate {
+  border: 1px solid color-mix(in srgb, var(--champagne) 46%, transparent);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 14%, transparent),
+    0 24px 70px -30px color-mix(in srgb, #06120E 62%, transparent);
+}
+
+.palette-swatch,
+.swatch {
+  border: 1px solid color-mix(in srgb, var(--champagne) 38%, transparent);
+}
+
+.field input,
+.field textarea,
+.field select {
+  color: var(--ink);
+  border-color: color-mix(in srgb, var(--champagne-soft) 44%, transparent);
+}
+
+.site-footer {
+  background: var(--night-deep);
+  border-top: 1px solid color-mix(in srgb, var(--champagne) 28%, transparent);
+}
+.site-footer, .site-footer a { color: var(--night-ink); }
+
+/* ── 10 · reduced motion & small screens ──────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .grain, .gold-dust i { animation: none; }
+  .scene--countdown .count-script em,
+  .scene--ayat .ayat-title {
+    animation: none;
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    color: var(--gold-bright);
+  }
+}
+
+@media (max-width: 720px) {
+  .noor-stage__mote { display: none; }
+}

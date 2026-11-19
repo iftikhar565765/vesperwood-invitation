@@ -60,6 +60,8 @@
   var selectedColorKey = '';
   var selectedColorRemovable = false;
   var elementLabels = {
+    'gate-toran': 'The marigold toran',
+    'gate-pediment': 'The mehrab arch',
     'opening-watermark': 'Opening watermark',
     'opening-eyebrow': 'Opening introduction',
     'opening-names': 'Opening names',
@@ -73,33 +75,46 @@
     'opening-hint': 'Invitation hint',
     'open-button': 'Open button',
     'folio-quote': 'Keepsake quote card',
-    'folio-note-one': 'Folio note i',
-    'folio-note-two': 'Folio note ii',
-    'folio-note-three': 'Folio note iii',
+    'story-note': 'Story handwritten note',
     'story-garland-top': 'Story garland',
     'story-garland-bottom': 'Story garland (bottom)',
     'story-caption': 'Story inscription',
-    'story-note': 'Story handwritten note',
-    'story-keepsake': 'Stamp & postmark',
+    'opening-tiles': 'Opening corner art',
+    'opening-lanterns': 'Opening lanterns',
+    'opening-glow': 'Opening glow',
+    'opening-watermark': 'Opening Bismillah',
+    'hero-shamsa': 'Hero star medallion',
+    'hero-lantern-l': 'Hero lantern (left)',
+    'hero-lantern-r': 'Hero lantern (right)',
+    'hero-crescent': 'Hero crescent ornament',
+    'hero-arch': 'Hero mihrab arch',
+    'hero-roses-bl': 'Hero roses (left)',
+    'hero-roses-br': 'Hero roses (right)',
+    'hero-swag-bl': 'Hero garland (left)',
+    'hero-swag-br': 'Hero garland (right)',
+    'ayat-plate': 'Scripture plate',
+    'ayat-medallion': 'Verse medallion',
     'std-note': 'Save-the-date note',
+    'std-dome': 'Save-the-date dome',
+    'std-glow': 'Save-the-date glow',
     'std-seal': 'Save-the-date seal',
-    'detail-ceremony': 'Details · ceremony',
-    'detail-reception': 'Details · reception',
+    'detail-mayun': 'Details · the Rehearsal',
+    'detail-mehndi': 'Details · the Ceremony',
+    'detail-nikah': 'Details · the Reception',
+    'detail-rukhsati': 'Details · the Brunch',
+    'detail-walima': 'Details · the Reply card',
     'detail-reply': 'Details · kindly reply',
-    'details-art': 'Details ornamental crest',
-    'details-art-frame': 'Crest · plate frame',
-    'details-art-arch': 'Crest · linden wreath',
-    'details-art-drop': 'Crest · hanging drop',
-    'details-art-rings': 'Crest · wedding rings',
-    'details-art-mono': 'Crest · monogram',
-    'details-art-date': 'Crest · date ribbon',
-    'details-art-sparkles': 'Crest · sparkles',
+    'details-plate': 'The particulars plate',
     'palette-dresscode': 'Dress code card',
+    'palette-swatches': 'Palette swatches',
     'day-words': 'Wedding-day words',
+    'venue-arch': 'Venue arch',
+    'countdown-shamsa': 'Countdown medallion',
+    'countdown-clock': 'Countdown clock',
     'rsvp-watermark': 'RSVP watermark',
     'rsvp-ornament': 'RSVP ornament',
-    'countdown-clock': 'Countdown clock',
-    'closing-garland': 'Closing garland',
+    'closing-swag': 'Closing dome plate',
+    'closing-swag-roses': 'Closing roses',
     'closing-message': 'Closing message',
     'closing-seal': 'Closing wax seal',
     'venue-ornament': 'Venue ornament',
@@ -414,7 +429,9 @@
     { step: 4, path: 'content.storyParagraphOne', label: 'the story opening' },
     { step: 4, path: 'content.storyParagraphTwo', label: 'the story continuation' },
     { step: 4, path: 'content.closingMessage', label: 'the closing note' },
-    { step: 6, path: 'rsvp.deadline', label: 'the reply-by date' }
+    { step: 5, path: 'content.eventThreeLabel', label: 'the Nikah heading' },
+    { step: 5, path: 'content.eventThreeTime', label: 'the Nikah time' },
+    { step: 7, path: 'rsvp.deadline', label: 'the reply-by date' }
   ];
 
   function isFilled(path) {
@@ -518,7 +535,7 @@
   }
 
   function prepareConfigForPublish() {
-    config.templateId = config.templateId || 'vesperwood';
+    config.templateId = config.templateId || 'shaadi';
     sendPreview();
     return Promise.resolve(clone(config));
   }
@@ -1116,17 +1133,9 @@
       addTextField(inner, { path: 'content.storyTitleScript', label: 'Story heading · script word' });
       addTextField(inner, { path: 'content.storyQuote', label: 'Keepsake quote', multiline: true, rows: 2 });
       addTextField(inner, { path: 'content.storyQuoteLabel', label: 'Quote credit' });
-      groupLabel(inner, 'The details columns');
-      addTextField(inner, { path: 'content.detailsIntro', label: 'Details introduction' });
-      addTextField(inner, { path: 'content.ceremonyLabel', label: 'Ceremony heading' });
-      addTextField(inner, { path: 'content.ceremonyTime', label: 'Ceremony time' });
-      addTextField(inner, { path: 'content.ceremonyNote', label: 'Ceremony note' });
-      addTextField(inner, { path: 'content.receptionLabel', label: 'Reception heading' });
-      addTextField(inner, { path: 'content.receptionTime', label: 'Reception time' });
-      addTextField(inner, { path: 'content.receptionNote', label: 'Reception note' });
-      addTextField(inner, { path: 'content.kindlyReplyLabel', label: 'Kindly reply heading' });
-      addTextField(inner, { path: 'content.kindlyReplyNote', label: 'Kindly reply note' });
-      addTextField(inner, { path: 'content.venueDescription', label: 'Venue description', multiline: true, rows: 2 });
+      groupLabel(inner, 'The verse & the closing');
+      addTextField(inner, { path: 'content.scriptureVerse', label: 'The verse in your words', multiline: true, rows: 2 });
+      addTextField(inner, { path: 'content.closingBlessingReference', label: 'Closing benediction reference' });
       groupLabel(inner, 'The programme frame');
       var momentsWrap = el('div', 'field');
       momentsWrap.appendChild(fieldLabel('Moments of the day', 'f-moments'));
@@ -1149,19 +1158,21 @@
   /* ── design step: curated moods & voices ───────────────────── */
 
   var THEME_META = [
-    { key: 'grove', name: 'Pine & Firelight', chips: ['#A8894C', '#F6F1E2', '#D9BC7F', '#0A1C12'] },
-    { key: 'fern', name: 'Moss & Fern', chips: ['#A38A52', '#F7F4E9', '#D3BC8B', '#0E2016'] },
-    { key: 'ember', name: 'Autumn Ember', chips: ['#9A7433', '#F9F3E6', '#DBBB88', '#241608'] },
-    { key: 'dusk', name: 'Twilight Fern', chips: ['#9C9256', '#F6F5EC', '#D5C394', '#0A1A16'] }
+    { key: 'vesperwood', name: 'Vesperwood Candlelight', chips: ['#0A1F1B', '#F5F1E1', '#C9A24B', '#143830'] },
+    { key: 'noor', name: 'Emerald Darbar', chips: ['#0E4B3A', '#F4EFE2', '#C0A052', '#0A2E24'] },
+    { key: 'zafiran', name: 'Golden Zafiran', chips: ['#8C6B12', '#FCF6E4', '#D6A02E', '#3A2B08'] },
+    { key: 'marjan', name: 'Marjan Rose', chips: ['#7A2E2E', '#FAF1E4', '#C0A052', '#38120F'] },
+    { key: 'nilofar', name: 'Nilofar Night', chips: ['#2A4A6B', '#F1F4F9', '#C0A052', '#0F1E33'] },
+    { key: 'zaytoon', name: 'Zaytoon Garden', chips: ['#4A5E2A', '#F6F8E8', '#C6A24F', '#1E2812'] }
   ];
 
   var TYPE_PAIRINGS = [
-    { name: 'Woodland Classic', fonts: { editorial: 'italiana', display: 'ebGaramond', script: 'allura', hand: 'cedarville', body: 'karla' } },
-    { name: 'Ink & Ivory', fonts: { editorial: 'bodoni', display: 'playfair', script: 'greatVibes', hand: 'caveat', body: 'dmSans' } },
-    { name: 'Moonlit Garden', fonts: { editorial: 'prata', display: 'ebGaramond', script: 'parisienne', hand: 'shadowsIntoLight', body: 'montserrat' } },
-    { name: 'Field Notes', fonts: { editorial: 'libreCaslon', display: 'crimsonPro', script: 'homemadeApple', hand: 'nothingYouCouldDo', body: 'karla' } },
-    { name: 'Wildflower Ink', fonts: { editorial: 'dmSerif', display: 'lora', script: 'tangerine', hand: 'shadowsIntoLight', body: 'outfit' } },
-    { name: 'Gilded Fern', fonts: { editorial: 'marcellus', display: 'cormorant', script: 'pinyon', hand: 'laBelle', body: 'jost' } }
+    { name: 'Royal Durbar', fonts: { editorial: 'rozhaOne', display: 'cormorant', script: 'greatVibes', hand: 'shadowsIntoLight', body: 'jost' } },
+    { name: 'Palace Ink', fonts: { editorial: 'bodoni', display: 'playfair', script: 'greatVibes', hand: 'caveat', body: 'dmSans' } },
+    { name: 'Moonlit Mehfil', fonts: { editorial: 'prata', display: 'ebGaramond', script: 'parisienne', hand: 'shadowsIntoLight', body: 'montserrat' } },
+    { name: 'Mehndi Notes', fonts: { editorial: 'libreCaslon', display: 'crimsonPro', script: 'homemadeApple', hand: 'nothingYouCouldDo', body: 'karla' } },
+    { name: 'Heirloom Verse', fonts: { editorial: 'dmSerif', display: 'lora', script: 'tangerine', hand: 'shadowsIntoLight', body: 'outfit' } },
+    { name: 'Gilded Jharokha', fonts: { editorial: 'marcellus', display: 'cormorant', script: 'pinyon', hand: 'laBelle', body: 'jost' } }
   ];
 
   function fontPreviewFamily(font) {
@@ -1173,6 +1184,7 @@
       prata: '"Prata", serif',
       marcellus: '"Marcellus", serif',
       italiana: '"Italiana", serif',
+      rozhaOne: '"Rozha One", serif',
       libreCaslon: '"Libre Caslon Text", serif',
       libreBaskerville: '"Libre Baskerville", serif',
       ebGaramond: '"EB Garamond", serif',
@@ -1234,7 +1246,7 @@
       });
       card.appendChild(chips);
       card.appendChild(el('span', 'choice-card__name', theme.name));
-      if ((config.theme || 'grove') === theme.key) card.classList.add('is-selected');
+      if ((config.theme || 'twilight') === theme.key) card.classList.add('is-selected');
       card.addEventListener('click', function () {
         if (config.theme === theme.key) return;
         config.theme = theme.key;
@@ -1286,7 +1298,7 @@
       var roles = [
         {
           key: 'editorial', label: 'Editorial headings',
-          choices: ['bodoni', 'playfair', 'dmSerif', 'italiana', 'prata', 'libreBaskerville', 'crimsonPro', 'cormorant']
+          choices: ['rozhaOne', 'bodoni', 'playfair', 'dmSerif', 'italiana', 'prata', 'marcellus', 'libreBaskerville', 'crimsonPro', 'cormorant']
         },
         {
           key: 'display', label: 'Romantic serif',
@@ -1332,10 +1344,11 @@
 
       groupLabel(inner, 'The website colours');
       var themeColorDefaults = {
-        gilt:      { primary: '#8C6B2F', darkBackground: '#2E0A15', paper: '#F7F1E1', accent: '#D6B87E', botanical: '#7A8464', rose: '#C9A9A0' },
-        royal:     { primary: '#7C1F3E', darkBackground: '#2B0A18', paper: '#F7F1E4', accent: '#C9AE7E', botanical: '#77804F', rose: '#C89C9C' },
-        verdant:   { primary: '#4F8A63', darkBackground: '#12271B', paper: '#F7F4E9', accent: '#C6B183', botanical: '#777957', rose: '#C5A0A0' },
-        porcelain: { primary: '#4E6E8E', darkBackground: '#16202C', paper: '#F8F5EC', accent: '#C9B58C', botanical: '#77808A', rose: '#B8A5A7' }
+        marigold: { primary: '#A63A46', darkBackground: '#5C1F2C', paper: '#FDF7EC', accent: '#C9922E', botanical: '#6E7C52', rose: '#E8A0B4' },
+        rani:     { primary: '#C13D68', darkBackground: '#5E1B3A', paper: '#FDF2EF', accent: '#C9922E', botanical: '#87866E', rose: '#EFB0C0' },
+        peacock:  { primary: '#2F6B52', darkBackground: '#1D3D30', paper: '#F3F8F3', accent: '#C9922E', botanical: '#6E7C52', rose: '#C9ABBA' },
+        sindoor:  { primary: '#8C2332', darkBackground: '#4A1420', paper: '#FBF2E9', accent: '#C08A2A', botanical: '#8A8062', rose: '#E4AFA6' },
+        gilt:     { primary: '#A63A46', darkBackground: '#5C1F2C', paper: '#FDF7EC', accent: '#C9922E', botanical: '#6E7C52', rose: '#E8A0B4' }
       };
       var activeThemeColors = themeColorDefaults[config.theme] || themeColorDefaults.gilt;
       var palette = el('div', 'palette-editor');
@@ -1387,6 +1400,45 @@
     body.appendChild(grid);
   }
 
+  /* ── the events step: every celebration, one field at a time ── */
+
+  function buildEventsStep(body) {
+    var note = el('p', 'field-hint events-step-hint',
+      'The Muslim celebrations in order — Mayun, Mehndi, the Nikah, the Rukhsati and the Walima. ' +
+      'Rename any of them, or empty a name to remove that celebration from the invitation.');
+    note.style.maxWidth = '52ch';
+    body.appendChild(note);
+
+    function eventBlock(title, prefix, prime) {
+      var wrap = el('div', 'field-group events-group' + (prime ? ' events-group--prime' : ''));
+      var head = el('h3', 'events-group__title', title);
+      wrap.appendChild(head);
+      var grid = el('div', 'field-grid');
+      addTextField(grid, {
+        path: 'content.' + prefix + 'Label', label: 'Celebration name',
+        hint: prime ? 'The heart of the invitation.' : ''
+      });
+      addTextField(grid, { path: 'content.' + prefix + 'Time', label: 'Day & time' });
+      addTextField(grid, { path: 'content.' + prefix + 'Note', label: 'A line about it', multiline: true, rows: 2 });
+      wrap.appendChild(grid);
+      return wrap;
+    }
+
+    body.appendChild(eventBlock('One · the beginning', 'eventOne'));
+    body.appendChild(eventBlock('Two · the henna night', 'eventTwo'));
+    body.appendChild(eventBlock('Three · the ceremony', 'eventThree', true));
+    body.appendChild(eventBlock('Four · the farewell', 'eventFour'));
+    body.appendChild(eventBlock('Five · the reception', 'eventFive'));
+
+    var replyWrap = el('div', 'field-group events-group');
+    replyWrap.appendChild(el('h3', 'events-group__title', 'The reply card'));
+    var replyGrid = el('div', 'field-grid');
+    addTextField(replyGrid, { path: 'content.kindlyReplyLabel', label: 'Reply heading' });
+    addTextField(replyGrid, { path: 'content.kindlyReplyNote', label: 'Reply note' });
+    replyWrap.appendChild(replyGrid);
+    body.appendChild(replyWrap);
+  }
+
   /* ── step registry ─────────────────────────────────────────── */
 
   var STEPS = [
@@ -1396,6 +1448,8 @@
       build: buildDayStep },
     { key: 'place', title: 'The place', check: 'place',
       build: buildPlaceStep },
+    { key: 'events', title: 'The events',
+      build: buildEventsStep },
     { key: 'words', title: 'Your words', check: 'words',
       build: buildWordsStep },
     { key: 'design', title: 'Colour & type',
@@ -1403,7 +1457,7 @@
     { key: 'replies', title: 'Guest replies', check: 'replies',
       build: buildRepliesStep }
   ];
-  var SHARE_STEP = 7;
+  var SHARE_STEP = 8;
 
   /* ── flow rendering & navigation ───────────────────────────── */
 
@@ -1518,12 +1572,12 @@
         return sampleValue(config.venue.name) !== sampleValue(defaults.venue.name) ||
           sampleValue(config.venue.mapsQuery) !== sampleValue(defaults.venue.mapsQuery);
       } },
-    { key: 'words', step: 4, label: 'Your story',
+    { key: 'words', step: 5, label: 'Your story',
       isDone: function () {
         return sampleValue(config.content.storyParagraphOne) !== sampleValue(defaults.content.storyParagraphOne) ||
           sampleValue(config.content.closingMessage) !== sampleValue(defaults.content.closingMessage);
       } },
-    { key: 'replies', step: 6, label: 'Your reply-by date',
+    { key: 'replies', step: 7, label: 'Your reply-by date',
       isDone: function () {
         return sampleValue(config.rsvp && config.rsvp.deadline) !==
           sampleValue(defaults.rsvp && defaults.rsvp.deadline);

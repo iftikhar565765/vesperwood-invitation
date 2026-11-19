@@ -8,3 +8,6 @@ _worker.bundle
 node_modules/
 dist/
 _raw-art/
+_raw-art/
+_gen-art.log
+_roll.log

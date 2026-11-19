@@ -1,172 +1,58 @@
 /* ═══════════════════════════════════════════════════════════════
-   VESPERWOOD · responsive.css
-   The grove breathes at every size — wide desk, small phone.
+   VESPERWOOD · dawn over the Registan — responsive
    ═══════════════════════════════════════════════════════════════ */
 
-@media (max-width: 1080px) {
-  .story-grid {
-    grid-template-columns: minmax(0, 1fr) minmax(0, .82fr);
-    gap: 2.4rem;
-  }
+@media (max-width: 1024px) {
+  .noor-stage__lantern--l { left: -0.4rem; }
+  .noor-stage__lantern--r { right: -0.4rem; }
 }
 
-@media (max-width: 900px) {
-  .nav__links { display: none; }
+@media (max-width: 760px) {
+  .closing-plate { width: min(260px, 72%); }
+  .closing-bloom--r { width: clamp(90px, 22vw, 140px); top: 3%; }
 
-  .story-grid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
+  /* the caravan panels keep their frame, tighten the column */
+  .event {
+    grid-template-columns: clamp(3.4rem, 14vw, 4.6rem) 1fr;
+    gap: clamp(.8rem, 3.6vw, 1.4rem);
   }
+  .event__note { max-width: 100%; }
 
-  .story-aside { padding-top: 0; }
-  .story-rose { margin-inline: auto; }
-
-  .particulars-row {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .programme {
-    grid-template-columns: 1fr;
-    max-width: 26rem;
-    margin-inline: auto;
-  }
-
-  .programme-item {
-    border-radius: 999px 999px 6px 6px;
-    padding: 2.8rem 1.6rem 2rem;
-  }
-
-  .understory {
-    background:
-      url('../assets/orn/understory-left.svg') left bottom / clamp(200px, 40vw, 320px) no-repeat;
-  }
-}
-
-@media (max-width: 720px) {
-  :root {
-    --pad-section: clamp(3.6rem, 11vh, 6rem);
-  }
-
-  .court-frame i {
-    width: clamp(46px, 11vw, 64px);
-  }
-
-  .opening__corner {
-    width: clamp(96px, 24vw, 150px);
-    opacity: .45;
-  }
-
-  .hero-frond {
-    width: clamp(64px, 14vw, 96px);
-    opacity: .26;
-  }
-
-  .hero-crest { width: clamp(132px, 34vw, 176px); }
-
-  .hero-scroll__line { height: 40px; }
-
-  .count-clock {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: .6rem;
-  }
-
-  .count-unit { min-width: 0; }
-
-  .count-num { font-size: clamp(1.9rem, 9vw, 2.6rem); }
-
-  .countdown-wreath {
-    width: clamp(150px, 38vw, 210px);
-    top: calc(var(--pad-section) - 2.6rem);
-  }
-
-  .fireflies i:nth-child(3n) { display: none; }
-
-  .std-seal { bottom: -28px; }
-  .seal { width: 58px; height: 58px; }
-  .seal__initials { font-size: 1.3rem; }
-
-  .dresscode-rose {
-    width: 84px;
-    top: -36px;
-    right: -8px;
-  }
-
-  .std-actions .btn,
-  .closing-actions .btn,
-  .venue-actions .btn {
-    width: 100%;
-    justify-content: center;
-  }
+  .arch-card { width: min(100%, 470px); }
+  /* the letter keeps its iwan-cut silhouette — only the padding
+     is roomier at the small scale */
+  .arch-card__inner { padding: 6cqw 4.5cqw 5cqw; }
 }
 
 @media (max-width: 560px) {
-  .particulars-row {
-    grid-template-columns: 1fr;
-    gap: 1.6rem;
-  }
-
-  .particular { gap: .4rem; }
-
-  .day-words {
-    gap: 1.3rem 2rem;
-  }
-
-  .day-word__text { font-size: .95rem; }
-
-  .menu__list a { padding: .6em .3em; }
-
-  .gate-stage { width: min(340px, 86vw); }
-
-  .gates { height: clamp(260px, 42vh, 360px); }
-
-  .gate-crest { width: clamp(102px, 29vw, 132px); top: 8%; }
-
-  .gate-crest__initials { font-size: clamp(1.4rem, 6vw, 2rem); }
-
-  .gate-pediment { top: -28px; }
-
-  .opening__corner { opacity: .34; }
-
-  .opening__names { font-size: clamp(2.4rem, 12vw, 3.6rem); }
-
-  .watermark-script {
-    font-size: clamp(3.4rem, 18vw, 6rem);
-    top: 2.4%;
-  }
-
-  .rsvp-card { padding-inline: 1.15rem; }
-
-  .court-frame::before,
-  .court-frame::after { opacity: .35; }
-}
-
-/* very short phones (landscape opening) */
-@media (max-height: 640px) {
-  .gate-stage { width: min(320px, 62vh); }
-  .gates { height: clamp(200px, 36vh, 290px); }
-  .gate-crest { width: clamp(92px, 26vw, 118px); top: 8%; }
-  .opening__names { font-size: clamp(2rem, 8vh, 3rem); margin-bottom: .8rem; }
-  .opening__hint { margin-top: 1rem; }
-  .opening__open { margin-top: .9rem; }
-  .opening__skip { margin-top: .6rem; }
-  .gate-pediment { top: -24px; }
-}
-
-/* graceful print — the invitation reads as text on paper */
-@media print {
-  .fireflies,
-  .understory,
-  .court-frame,
-  .nav,
-  .menu,
-  .hero-scroll,
-  #opening {
-    display: none !important;
-  }
-
-  body {
-    background: #fff;
-    color: #111;
-  }
+  /* the narrow card drops its hairline rules and tightens the names */
+  .arch-card__rule { display: none; }
+  /* the gothic opening is a shorter letter — on phones it carries the
+     invite, the names and the date; the verse lives in the story quote
+     and the venue in the particulars below */
+  .arch-card__bismillah { display: none; }
+  .arch-card__venue-name { display: none; }
+  .arch-card__invite { max-width: 92%; letter-spacing: .09em; }
+  .arch-card__bismillah { font-size: .92rem; }
+  .arch-card__invite { letter-spacing: .09em; max-width: 88%; }
+  /* the full address lives in the venue chapter and the particulars —
+     the letter carries the venue name alone */
+  .arch-card__venue-address { display: none; }
+  .moon-card__name { font-size: clamp(2rem, 8vw, 2.5rem); }
+  .opening__florals { width: clamp(8rem, 30vw, 12rem); }
+  .opening__lantern--l { left: .2rem; }
+  .opening__lantern--r { right: .2rem; }
+  .noor-stage__lantern { width: clamp(3.6rem, 13vw, 5rem); top: -1.6rem; }
+  .noor-stage__lantern--l { left: -.2rem; }
+  .noor-stage__lantern--r { right: -.2rem; }
+  .noor-orn--swag-bl, .noor-orn--swag-br { display: none; }
+  .arch-card__names { font-size: inherit; }
+  .story-corner { width: clamp(4.8rem, 20vw, 7rem); }
+  .count-clock { flex-wrap: wrap; gap: 1.1rem 1.6rem; }
+  .count-unit { min-width: 4.4rem; }
+  .watermark-script { font-size: clamp(5rem, 26vw, 9rem); right: -.6rem; }
+  .std-actions .btn { width: min(280px, 82vw); }
+  .day-words { gap: 1rem 1.6rem; }
+  .noor-orn--roses-bl { left: -2.4rem; }
+  .noor-orn--roses-br { right: -2.4rem; }
 }

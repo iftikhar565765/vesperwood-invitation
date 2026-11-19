@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════
-   VESPERWOOD · customizer.css
+   FAEGLEN · customizer.css
    ---------------------------------------------------------------
    The Invitation Atelier — a guided, seven-step studio.
    Design language: quiet ink surfaces, Syne headlines, Jost
@@ -13,11 +13,11 @@
   color-scheme: dark;
 
   /* surfaces — warm ink, flat */
-  --desk: #11150e;
-  --desk-soft: #14180f;
-  --panel: #171c12;
-  --panel-soft: #1e2416;
-  --panel-deep: #12160d;
+  --desk: #0c1416;
+  --desk-soft: #0e1719;
+  --panel: #111b1e;
+  --panel-soft: #162326;
+  --panel-deep: #0a1113;
   --well: rgba(0, 0, 0, .3);
 
   /* lines & type colours */
@@ -32,7 +32,7 @@
   --accent: #dfc084;
   --accent-strong: #f2dca8;
   --accent-ink: #151206;
-  --sage: #a4b494;
+  --sage: #8fb0b4;
   --rose-soft: #d8a5a5;
 
   /* shape & depth */
@@ -1248,3 +1248,25 @@ body.preview-open .preview-toggle { display: none; }
 .submissions-button:hover { background: rgba(224, 210, 172, .1); color: var(--copy); }
 
 body.celebration-open { overflow: hidden; }
+
+/* ═══ the events step — five celebrations, one quiet block each ═══ */
+
+.events-step-hint { margin-bottom: 14px; line-height: 1.6; }
+
+.events-group {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 14px 4px;
+  margin-bottom: 14px;
+  background: var(--panel-deep);
+}
+.events-group--prime { border-color: var(--line-strong); background: var(--panel-soft); }
+.events-group__title {
+  margin: 0 0 10px;
+  font-family: var(--font-ui);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
