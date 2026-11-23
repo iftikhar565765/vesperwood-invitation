@@ -100,14 +100,24 @@
 }
 
 .choice .diamond {
-  width: 12px;
-  height: 14px;
+  width: 15px;
+  height: 15px;
   flex: none;
   border: 1px solid var(--champagne-soft);
-  border-radius: 100% 100% 100% 3px;
-  rotate: 8deg;
+  border-radius: 50%;
   background: transparent;
+  display: grid;
+  place-items: center;
   transition: background-color .25s var(--ease), border-color .25s var(--ease);
+}
+/* a clean gold diamond appears at the heart when chosen */
+.choice .diamond::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: transparent;
+  transform: rotate(45deg);
+  transition: background-color .25s var(--ease);
 }
 
 .choice:has(input:checked) {
@@ -115,8 +125,11 @@
   border-color: var(--gold);
 }
 .choice:has(input:checked) .diamond {
+  background: color-mix(in srgb, var(--rose) 34%, transparent);
+  border-color: var(--gold);
+}
+.choice:has(input:checked) .diamond::after {
   background: var(--burgundy);
-  border-color: var(--burgundy);
 }
 .choice:has(input:focus-visible) {
   outline: 2px solid var(--gold);

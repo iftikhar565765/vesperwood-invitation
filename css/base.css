@@ -89,13 +89,12 @@ a { color: inherit; }
 .kicker::before,
 .kicker::after {
   content: "";
-  width: 9px;
-  height: 11px;
+  width: clamp(18px, 3vw, 30px);
+  height: 1px;
   flex: none;
-  border: 1px solid var(--gold-line);
-  border-radius: 100% 100% 100% 4px;
-  rotate: 8deg;
+  background: linear-gradient(90deg, transparent, var(--gold-line));
 }
+.kicker::after { background: linear-gradient(90deg, var(--gold-line), transparent); }
 .kicker--center { margin-inline: auto; }
 .kicker--ink { color: var(--burgundy); }
 .kicker--ink::before,

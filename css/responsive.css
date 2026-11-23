@@ -1,10 +1,10 @@
 /* ═══════════════════════════════════════════════════════════════
-   VESPERWOOD · dawn over the Registan — responsive
+   VESPERWOOD · the candlelit letter — responsive
    ═══════════════════════════════════════════════════════════════ */
 
 @media (max-width: 1024px) {
-  .noor-stage__lantern--l { left: -0.4rem; }
-  .noor-stage__lantern--r { right: -0.4rem; }
+  .vesper-lantern--l { left: .4rem; }
+  .vesper-lantern--r { right: .4rem; }
 }
 
 @media (max-width: 760px) {
@@ -18,41 +18,34 @@
   }
   .event__note { max-width: 100%; }
 
-  .arch-card { width: min(100%, 470px); }
-  /* the letter keeps its iwan-cut silhouette — only the padding
-     is roomier at the small scale */
-  .arch-card__inner { padding: 6cqw 4.5cqw 5cqw; }
+  /* the letter stays fullscreen — the formula keeps its proportions;
+     only the decorations tighten around it */
+  .vesper-lantern { width: clamp(2.8rem, 11vw, 4rem); top: -1.4rem; }
+  .vesper-fern { width: clamp(6.4rem, 24vw, 9rem); }
+  .arch-card__inner { padding: 43cqw 6.5cqw 4cqw; }
 }
 
 @media (max-width: 560px) {
-  /* the narrow card drops its hairline rules and tightens the names */
-  .arch-card__rule { display: none; }
-  /* the gothic opening is a shorter letter — on phones it carries the
-     invite, the names and the date; the verse lives in the story quote
-     and the venue in the particulars below */
-  .arch-card__bismillah { display: none; }
-  .arch-card__venue-name { display: none; }
+  /* the letter carries everything — only the rose sprays yield */
+  .vesper-rose { display: none; }
+  .vesper-lantern { width: clamp(2.5rem, 10vw, 3.4rem); top: -1.2rem; }
+  .vesper-lantern--l { left: .1rem; }
+  .vesper-lantern--r { right: .1rem; }
+  .vesper-fern { width: clamp(5.8rem, 22vw, 8rem); }
+  .vesper-fern--bl { left: -1.6rem; }
+  .vesper-fern--br { right: -1.6rem; }
   .arch-card__invite { max-width: 92%; letter-spacing: .09em; }
-  .arch-card__bismillah { font-size: .92rem; }
-  .arch-card__invite { letter-spacing: .09em; max-width: 88%; }
-  /* the full address lives in the venue chapter and the particulars —
-     the letter carries the venue name alone */
-  .arch-card__venue-address { display: none; }
+  /* the fullscreen letter carries the address on phones too — it fits */
+  .arch-card__inner { padding-bottom: 5.5cqw; }
+  .arch-card__venue-address { font-size: .56rem; }
   .moon-card__name { font-size: clamp(2rem, 8vw, 2.5rem); }
   .opening__florals { width: clamp(8rem, 30vw, 12rem); }
   .opening__lantern--l { left: .2rem; }
   .opening__lantern--r { right: .2rem; }
-  .noor-stage__lantern { width: clamp(3.6rem, 13vw, 5rem); top: -1.6rem; }
-  .noor-stage__lantern--l { left: -.2rem; }
-  .noor-stage__lantern--r { right: -.2rem; }
-  .noor-orn--swag-bl, .noor-orn--swag-br { display: none; }
-  .arch-card__names { font-size: inherit; }
   .story-corner { width: clamp(4.8rem, 20vw, 7rem); }
   .count-clock { flex-wrap: wrap; gap: 1.1rem 1.6rem; }
   .count-unit { min-width: 4.4rem; }
   .watermark-script { font-size: clamp(5rem, 26vw, 9rem); right: -.6rem; }
   .std-actions .btn { width: min(280px, 82vw); }
   .day-words { gap: 1rem 1.6rem; }
-  .noor-orn--roses-bl { left: -2.4rem; }
-  .noor-orn--roses-br { right: -2.4rem; }
 }

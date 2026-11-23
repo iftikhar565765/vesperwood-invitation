@@ -77,13 +77,13 @@ body {
   background: radial-gradient(120% 90% at 50% 42%, transparent 52%, color-mix(in srgb, #06120E 44%, transparent) 100%);
 }
 
-/* the glazed dome reads as the rising sun disc over the iwan */
-.noor-stage__shamsa {
+/* the wreath medallions glow like candlelit glass */
+.wreath-v4-glow {
   filter: drop-shadow(0 0 34px color-mix(in srgb, var(--champagne) 26%, transparent));
 }
 
 /* drifting light motes — dawn pollen over the tiles */
-.noor-stage__mote {
+.vesper-mote {
   background: radial-gradient(circle, var(--gold-bright) 0%, transparent 70%);
   box-shadow: 0 0 8px color-mix(in srgb, var(--champagne) 55%, transparent);
 }
@@ -212,7 +212,7 @@ body {
 .scene-body .reveal:nth-child(4) { transition-delay: .24s; }
 .scene-body .reveal:nth-child(5) { transition-delay: .3s; }
 
-.noor-stage__lantern,
+.vesper-lantern,
 .opening__lantern { animation-duration: 9.5s; }
 
 /* buttons — burnished saffron on lagoon */
@@ -283,5 +283,5 @@ body {
 }
 
 @media (max-width: 720px) {
-  .noor-stage__mote { display: none; }
+  .vesper-mote { display: none; }
 }

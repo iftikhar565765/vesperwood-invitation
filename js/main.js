@@ -1108,6 +1108,15 @@
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
     reveals.forEach(function (el) { io.observe(el); });
+
+    /* the fullscreen letter lives in the first viewport — its lower
+       half falls inside the -8% band and would never cross the .12
+       threshold, so the handover reveals it directly (same lesson
+       as the arch windows: never let the observer eat the letter) */
+    Array.prototype.forEach.call(
+      document.querySelectorAll('.scene--hero .reveal'),
+      function (el) { el.classList.add('in-view'); io.unobserve(el); }
+    );
   })();
 
   /* ══ 9 · A BREATH OF PARALLAX (GSAP only, never essential) ═════ */

@@ -1,12 +1,12 @@
 /* ═══════════════════════════════════════════════════════════════
-   VESPERWOOD · dawn over the Registan — sections
+   VESPERWOOD · the candlelit letter in the wood — sections
    ---------------------------------------------------------------
-   A silk-road morning: the hero is a dawn sky — lapis into
-   turquoise into saffron — with the glazed dome rising behind a
-   pishtaq arch of tile. The page is ivory silk; the bands are
-   lagoons of girih tilework; every ornament is turquoise, cobalt
-   and saffron gold. The celebrations read as a caravan of days:
-   stacked bordered panels, never zigzag.
+   The hero is the invitation itself: a fullscreen ivory letter
+   with a soft arch top, carried on a pine-dark dusk. Lanterns,
+   ferns, wild roses and fireflies frame the letter from the
+   outside — the letter never becomes a decoration. The page is
+   ivory silk; the bands are pine lagoons with a whisper of
+   engraved lattice; every ornament is hairline gold.
    ═══════════════════════════════════════════════════════════════ */
 
 /* ═══ SHARED SCENE RHYTHM ═══════════════════════════════════════ */
@@ -14,12 +14,6 @@
 .scene {
   position: relative;
   padding: var(--scene-pad-y) var(--scene-pad-x);
-}
-
-.scene--hero {
-  padding-top: clamp(3rem, 7vh, 5rem);
-  padding-bottom: clamp(2.6rem, 6vh, 4.2rem);
-  overflow: hidden;
 }
 
 .scene-body {
@@ -47,59 +41,105 @@
 }
 .display .script { font-style: normal; }
 
-/* ═══ THE HERO — dawn over the Registan ═════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════
+   THE HERO — the candlelit letter in the wood
+   The letter is the invitation itself: a fullscreen ivory sheet
+   with a soft arch top. Every decoration — lanterns, ferns, roses,
+   fireflies — lives on the pine-dark ground AROUND the letter.
+   ═══════════════════════════════════════════════════════════════ */
 
-.noor-stage {
+.scene--hero {
   position: relative;
-  width: min(100%, 1080px);
-  margin-inline: auto;
+  min-height: 100svh;
+  padding: 0 0 2.6rem;
+  overflow: hidden;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   justify-items: center;
+  align-content: center;
+  background:
+    radial-gradient(130% 100% at 50% 0%,
+      color-mix(in srgb, var(--olive) 16%, var(--night)) 0%,
+      var(--night) 40%,
+      var(--night-deep) 100%);
 }
 
-/* the glazed dome rises out of the dawn behind the arch */
-.noor-stage__shamsa {
+.vesper-stage {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 100%;
+}
+
+/* the letter and its court — decorations anchor to the letter's own
+   edges so they frame it at every screen size, never drift away */
+.arch-frame {
+  position: relative;
+  display: grid;
+  place-items: center;
+}
+
+/* warm candlelight pooling behind the arch */
+.vesper-halo {
   position: absolute;
-  top: 32%;
+  top: 4%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(100%, 790px);
-  opacity: .45;
-  z-index: 0;
+  transform: translateX(-50%);
+  width: min(96vw, 1150px);
+  aspect-ratio: 1 / 1;
+  background: radial-gradient(closest-side,
+    rgba(232, 185, 106, .16),
+    rgba(232, 185, 106, .05) 55%,
+    transparent 72%);
   pointer-events: none;
-  user-select: none;
+  z-index: 0;
 }
 
-/* hanging fanous lanterns at the shoulders of the sky */
-.noor-stage__lantern {
+/* candle lanterns hang just beside the arch, chain and all */
+.vesper-lantern {
   position: absolute;
-  top: -2.4rem;
-  width: clamp(4.8rem, 9vw, 7.4rem);
+  top: .2rem;
+  width: clamp(3.2rem, 7vw, 5.2rem);
   z-index: 1;
   pointer-events: none;
   user-select: none;
   transform-origin: 50% 0;
   animation: lantern-sway 9s ease-in-out infinite alternate;
 }
-.noor-stage__lantern--l { left: clamp(0rem, 4vw, 5rem); }
-.noor-stage__lantern--r { right: clamp(0rem, 4vw, 5rem); animation-delay: -3.2s; }
+.vesper-lantern--l { left: clamp(-4.6rem, -3.4vw, -2.8rem); }
+.vesper-lantern--r { right: clamp(-4.6rem, -3.4vw, -2.8rem); animation-delay: -3.2s; }
 @keyframes lantern-sway {
   from { rotate: -2.2deg; }
   to   { rotate: 2.2deg; }
 }
 
-/* the crescent rides above the arch */
-.noor-stage__crescent {
-  position: relative;
+/* ferns rise at the letter's feet, tucked behind its corners */
+.vesper-fern {
+  position: absolute;
+  bottom: -1.6rem;
+  width: clamp(8.5rem, 16vw, 13.5rem);
   z-index: 1;
-  width: clamp(3.2rem, 6.4vw, 4.6rem);
-  margin-bottom: clamp(.3rem, 1.2vh, .8rem);
   pointer-events: none;
   user-select: none;
 }
+.vesper-fern--bl { left: clamp(-5.6rem, -4vw, -3.6rem); }
+.vesper-fern--br { right: clamp(-5.6rem, -4vw, -3.6rem); transform: scaleX(-1); }
 
-/* drifting dawn-light motes */
-.noor-stage__mote {
+/* wild rose sprays rest against the arch shoulders */
+.vesper-rose {
+  position: absolute;
+  top: 9%;
+  width: clamp(4.4rem, 9vw, 7rem);
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+}
+.vesper-rose--tl { left: clamp(-4.2rem, -3vw, -2.4rem); }
+.vesper-rose--tr { right: clamp(-4.2rem, -3vw, -2.4rem); transform: scaleX(-1); }
+
+/* fireflies drifting through the dusk */
+.vesper-mote {
   position: absolute;
   z-index: 0;
   left: var(--x);
@@ -119,95 +159,105 @@
   to   { transform: translateY(-26px); opacity: var(--o); }
 }
 
-/* ── the arch card — a pishtaq of glazed tile ─────────────────── */
+/* ── the letter — fullscreen ivory, soft arch top ────────────────
+   Fullscreen formula (proven on the arch windows): width and height
+   both capped by the viewport, so the paper fills the screen on any
+   display without ever distorting.                                   */
 
 .arch-card {
   position: relative;
   z-index: 2;
-  width: min(100%, 520px);
-  aspect-ratio: 599 / 864;
+  height: min(calc(100svh - 7.2rem), calc(100vw / .64));
+  aspect-ratio: 16 / 25;
+  max-width: 100%;
   container-type: inline-size;
+  border-radius: 50% 50% 14px 14px / 26% 26% 14px 14px;
+  background:
+    radial-gradient(120% 70% at 50% 0%,
+      color-mix(in srgb, #FFFBEA 70%, transparent) 0%, transparent 58%),
+    linear-gradient(180deg,
+      var(--paper-raised) 0%,
+      var(--ivory) 46%,
+      color-mix(in srgb, var(--parchment) 82%, var(--ivory) 18%) 100%);
+  box-shadow:
+    0 34px 80px color-mix(in srgb, #06120E 52%, transparent),
+    0 6px 22px color-mix(in srgb, #06120E 34%, transparent),
+    inset 0 0 0 1.5px color-mix(in srgb, var(--champagne) 38%, transparent);
+  overflow: hidden;
 }
 
-/* the paper's shadow pooling on the window's inner depth */
+/* the engraved double hairline frame follows the arch */
 .arch-card::before {
   content: "";
   position: absolute;
-  left: 28%;
-  right: 29%;
-  top: 55%;
-  bottom: 12.5%;
-  z-index: 1;
-  background: color-mix(in srgb, #06120E 45%, transparent);
-  filter: blur(26px);
-  border-radius: 10px;
+  inset: clamp(9px, 2.1cqw, 18px);
+  border-radius: inherit;
+  border: 1px solid color-mix(in srgb, var(--champagne) 55%, transparent);
   pointer-events: none;
+  z-index: 3;
 }
-
-.arch-card__frame {
+.arch-card::after {
+  content: "";
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
+  inset: calc(clamp(9px, 2.1cqw, 18px) + 4px);
+  border-radius: inherit;
+  border: 1px solid color-mix(in srgb, var(--champagne) 28%, transparent);
   pointer-events: none;
-  user-select: none;
-  filter: drop-shadow(0 26px 54px color-mix(in srgb, #06120E 62%, transparent));
-  z-index: 0;
+  z-index: 3;
 }
 
-/* the ivory letter — cut to the iwan's own silhouette so it fills
-   the whole window: the ogive head is traced point-for-point from the
-   window's actual curve in the artwork (tip to springline), the sides
-   ride the window body with a whisper of depth, sill just below */
+/* the letter's face — everything sits below the arch springline */
 .arch-card__inner {
-  position: absolute;
-  left: 24.31%;
-  right: 24.91%;
-  top: 52.43%;
-  bottom: 9.37%;
+  position: relative;
   z-index: 2;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   text-align: center;
-  padding: 4cqw 4cqw 3.5cqw;
+  padding: 44cqw 7.5cqw 3.4cqw;
   gap: 0;
-  background: linear-gradient(180deg,
-    var(--paper-raised) 0%,
-    var(--ivory) 52%,
-    color-mix(in srgb, var(--parchment) 80%, var(--ivory) 20%) 100%);
-  border-radius: 3px;
-  box-shadow:
-    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 42%, transparent),
-    inset 0 0 40px color-mix(in srgb, var(--burgundy) 8%, transparent);
-  clip-path: polygon(3.8% 0%, 3.35% 12.5%, 2.9% 25%, 2.45% 37.5%, 2% 50%, 1.55% 62.5%, 1.1% 75%, 0.65% 87.5%, 0.2% 100%, 0% 100%, 100% 100%, 99.8% 100%, 99.43% 87.5%, 99.06% 75%, 98.7% 62.5%, 98.33% 50%, 97.96% 37.5%, 97.59% 25%, 97.22% 12.5%, 96.85% 0%);
 }
 .arch-card__inner > * { max-width: 100%; }
-.arch-card__inner > * + * { margin-top: clamp(.14rem, .9cqw, .34rem); }
+.arch-card__inner > * + * { margin-top: clamp(.14rem, 1.05cqw, .42rem); }
+/* the letter breathes: the slack spreads evenly between the four
+   anchors — names, date, venue and the closing line (doubled class
+   weight so it outranks the zeroed margins below) */
+.arch-card__inner > .arch-card__names,
+.arch-card__inner > .arch-card__date,
+.arch-card__inner > .arch-card__venue,
+.arch-card__inner > .arch-card__closing { margin-top: auto; }
+.arch-card__names { padding-top: .6cqw; }
+
+/* the monogram crest rides inside the arch */
+.arch-card__crest {
+  position: absolute;
+  top: 9cqw;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14.5cqw;
+  z-index: 4;
+  pointer-events: none;
+  user-select: none;
+}
 
 .arch-card__bismillah {
   font-family: var(--font-editorial);
   font-style: italic;
-  font-size: clamp(.82rem, 2.6cqw, 1.02rem);
+  font-size: clamp(.84rem, 2.9cqw, min(1.18rem, 1.9svh));
   line-height: 1.45;
   color: var(--burgundy);
-  margin-bottom: 0;
 }
-
-/* the blessing line now lives with the closing words under the arch —
-   the letter keeps only what a letter carries */
-.arch-card__blessing { display: none; }
 
 .arch-card__invite {
   margin-top: 0;
-  max-width: 84%;
+  max-width: 86%;
   font-family: var(--font-ui);
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: .13em;
-  font-size: clamp(.44rem, 1.8cqw, .54rem);
+  font-size: clamp(.46rem, 1.85cqw, min(.56rem, .95svh));
   line-height: 1.7;
   color: var(--ink-soft);
 }
@@ -224,8 +274,8 @@
 .arch-card__name {
   font-family: var(--font-script);
   font-weight: 400;
-  font-size: clamp(1.5rem, 6cqw, 2.3rem);
-  line-height: 1.05;
+  font-size: clamp(2.05rem, 12.6cqw, min(5.1rem, 8.2svh));
+  line-height: 1.04;
   color: var(--burgundy);
   text-shadow: 0 1px 0 color-mix(in srgb, var(--champagne) 30%, transparent);
 }
@@ -233,7 +283,7 @@
 .arch-card__and {
   font-family: var(--font-editorial);
   font-style: italic;
-  font-size: clamp(.66rem, 2.1cqw, .84rem);
+  font-size: clamp(.7rem, 2.4cqw, min(1rem, 1.5svh));
   color: var(--gold-ink);
   letter-spacing: .08em;
 }
@@ -241,135 +291,103 @@
 .arch-card__rule {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  margin-top: 0;
+  margin-top: .2rem;
 }
-.arch-card__rule i {
-  display: block;
-  width: clamp(20px, 7%, 48px);
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold-line));
-}
-.arch-card__rule i:last-child { transform: scaleX(-1); }
-.arch-card__rule img { width: clamp(1.7rem, 5.6%, 2.2rem); height: auto; opacity: .92; }
-/* the closing rule yields its place to the venue lines — the label
-   under the venue name already carries its own dash ornament */
-.arch-card__rule--end { display: none; }
+/* the divider carries its own fading hairlines — nothing else needed */
+.arch-card__rule i { display: none; }
+.arch-card__rule img { width: clamp(8rem, 34cqw, 14rem); height: auto; opacity: .95; }
 
 .arch-card__date { margin-top: 0; }
 .arch-card__date-week {
   color: var(--gold-ink);
   letter-spacing: .26em;
-  font-size: clamp(.44rem, 1.7cqw, .52rem);
+  font-size: clamp(.46rem, 1.8cqw, min(.56rem, .9svh));
 }
 .arch-card__date-row {
   display: flex;
   align-items: baseline;
   justify-content: center;
   gap: .7rem;
-  margin-top: .22rem;
+  margin-top: .2rem;
 }
 .arch-card__date-side {
   color: var(--ink-soft);
-  font-size: clamp(.54rem, 2.2cqw, .66rem);
+  font-size: clamp(.56rem, 2.25cqw, min(.72rem, 1.1svh));
 }
 .arch-card__date-num {
   font-family: var(--font-display);
-  font-size: clamp(1.15rem, 4.6cqw, 1.5rem);
+  font-size: clamp(1.6rem, 6.6cqw, min(2.85rem, 4.4svh));
   line-height: 1;
   color: var(--burgundy);
   letter-spacing: .04em;
 }
 
-/* the hour is carried by the countdown, events and particulars —
-   the letter keeps the essence */
-.arch-card__nikah { display: none; }
+/* the hour line — carried on the letter now that it is fullscreen */
+.arch-card__nikah {
+  margin-top: .38rem;
+  color: var(--gold-ink);
+  font-size: clamp(.5rem, 1.95cqw, min(.62rem, .98svh));
+  letter-spacing: .18em;
+}
 .arch-card__nikah-sep { color: var(--gold-line); }
 
 .arch-card__venue {
   margin-top: 0;
   display: flex;
   flex-direction: column;
-  gap: .22rem;
-}
-.arch-card__venue-label { display: none; }
-.arch-card__venue-label i {
-  display: block;
-  width: 24px;
-  height: 1px;
-  background: var(--gold-line);
+  gap: .18rem;
 }
 .arch-card__venue-name {
   font-family: var(--font-display);
-  font-size: clamp(.82rem, 2.9cqw, 1.02rem);
+  font-size: clamp(.88rem, 3.3cqw, min(1.26rem, 2svh));
   letter-spacing: .05em;
   color: var(--ink);
 }
-
-/* the short gothic letter carries the venue name alone — the full
-   address lives in the particulars and the venue chapter */
-.arch-card__venue-address { display: none; }
 .arch-card__venue-address {
   font-family: var(--font-body);
-  font-size: clamp(.58rem, 2.1cqw, .66rem);
+  font-size: clamp(.58rem, 2.2cqw, min(.78rem, 1.2svh));
   line-height: 1.5;
   color: var(--ink-soft);
-  max-width: 30ch;
+  white-space: nowrap;
 }
 
-/* the base — Persian tulips and jasmine anchored to the stage */
-.noor-orn {
-  position: absolute;
-  pointer-events: none;
-  user-select: none;
-  z-index: 1;
+/* the closing blessing closes the letter */
+.arch-card__closing {
+  font-family: var(--font-editorial);
+  font-style: italic;
+  font-size: clamp(.68rem, 2.6cqw, min(.94rem, 1.5svh));
+  color: var(--burgundy);
 }
-.noor-orn--roses-bl,
-.noor-orn--roses-br {
-  bottom: -1.4rem;
-  width: clamp(7.4rem, 16vw, 12.4rem);
-  filter: drop-shadow(0 12px 26px color-mix(in srgb, #06120E 42%, transparent));
-}
-.noor-orn--roses-bl { left: -1rem; transform: rotate(-4deg); }
-.noor-orn--roses-br { right: -1rem; transform: scaleX(-1) rotate(-4deg); }
-.noor-orn--swag-bl,
-.noor-orn--swag-br {
-  bottom: 24%;
-  width: clamp(4.6rem, 10vw, 7.6rem);
-  opacity: .92;
-}
-.noor-orn--swag-bl { left: 1.4rem; transform: rotate(10deg); }
-.noor-orn--swag-br { right: 1.4rem; transform: scaleX(-1) rotate(10deg); }
 
-/* the signboard line + scroll cue beneath the stage */
+/* the scroll cue beneath the letter */
 .hero-signboard {
   position: relative;
   z-index: 2;
-  margin-top: clamp(2.4rem, 6vh, 3.6rem);
+  margin-top: 1.5rem;
   display: grid;
   justify-items: center;
-  gap: 1.2rem;
-}
-/* the signboard line sits on the pale dawn ground — ink, not gold */
-.hero-signboard__line {
-  color: color-mix(in srgb, var(--ink) 88%, var(--burgundy));
 }
 
 .hero-scroll {
   display: inline-flex;
   align-items: center;
-  gap: .6rem;
-  color: color-mix(in srgb, var(--ink) 72%, transparent);
+  gap: .7rem;
+  color: var(--gold-bright);
+  font-size: .8rem;
+  letter-spacing: .22em;
+  text-shadow: 0 1px 12px color-mix(in srgb, var(--night-deep) 85%, transparent);
 }
 .hero-scroll__arrow {
-  width: 15px;
-  height: 15px;
+  width: 19px;
+  height: 19px;
   animation: scroll-pulse 2.4s var(--ease) infinite;
 }
 @keyframes scroll-pulse {
   0%, 100% { transform: translateY(0); opacity: .7; }
   50% { transform: translateY(5px); opacity: 1; }
 }
+
+
 
 /* ═══ THE CHRONICLE — the story on ivory silk ═══════════════════ */
 
@@ -452,18 +470,24 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: url("../assets/art/tiles-vesperwood.jpg") center / 520px repeat;
+  background: url("../assets/art/tiles-v4.png") center / 520px repeat;
   opacity: .07;
   pointer-events: none;
 }
 
+.ayat-crest {
+  position: relative;
+  z-index: 2;
+  width: clamp(7.2rem, 17vw, 9rem);
+  margin-bottom: -3.4rem;   /* the wreath rides the plate's crown */
+  pointer-events: none;
+}
 .ayat-arch {
-  position: absolute;
-  top: -6rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(120%, 700px);
-  opacity: .2;
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: .92;
+  filter: drop-shadow(0 6px 18px color-mix(in srgb, #06120E 45%, transparent));
   pointer-events: none;
   user-select: none;
 }
@@ -505,6 +529,9 @@
   line-height: 1.9;
   color: var(--gilding);
   text-shadow: 0 2px 18px rgba(0, 0, 0, .4);
+  max-width: 34ch;
+  margin-inline: auto;
+  text-wrap: balance;
 }
 
 .ayat-translation {
@@ -886,7 +913,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: url("../assets/art/tiles-vesperwood.jpg") center / 520px repeat;
+  background: url("../assets/art/tiles-v4.png") center / 520px repeat;
   opacity: .06;
   pointer-events: none;
 }
@@ -907,13 +934,26 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: flex-start;
   gap: clamp(1.2rem, 4.5vw, 2.6rem);
   margin-top: clamp(1.8rem, 5vh, 2.8rem);
   list-style: none;
   padding: 0;
+  /* the cable every bulb hangs from */
+  background: linear-gradient(90deg, transparent, var(--gold-line) 12% 88%, transparent);
+  background-repeat: no-repeat;
+  background-size: 100% 1px;
+  background-position: 0 15px;
 }
 .day-word { display: grid; justify-items: center; gap: .55rem; }
-.day-word__bulb { width: 30px; height: 30px; color: var(--champagne); opacity: .9; }
+.day-word__bulb {
+  width: 30px;
+  height: 30px;
+  color: var(--champagne);
+  opacity: .95;
+  background: color-mix(in srgb, var(--night) 82%, transparent);
+  border-radius: 50%;
+}
 .day-word__text {
   font-family: var(--font-editorial);
   font-style: italic;
@@ -1004,6 +1044,18 @@
   background: linear-gradient(180deg, var(--night-deep) 0%, var(--night) 100%);
   overflow: hidden;
 }
+/* a candle-dark scrim settles between the wreath and the words */
+.scene--countdown::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(90% 80% at 50% 50%,
+    color-mix(in srgb, var(--night-deep) 88%, transparent) 0%,
+    color-mix(in srgb, var(--night-deep) 55%, transparent) 55%,
+    transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
 
 .countdown-shamsa {
   position: absolute;
@@ -1011,7 +1063,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: min(72%, 520px);
-  opacity: .17;
+  opacity: .3;
   pointer-events: none;
   user-select: none;
   -webkit-mask-image: radial-gradient(closest-side, #000 62%, rgba(0,0,0,.55) 78%, transparent 96%);
@@ -1164,8 +1216,8 @@
 .closing-bloom--r {
   position: absolute;
   top: 4%;
-  right: -1%;
-  width: clamp(110px, 15vw, 190px);
+  right: 2.5%;
+  width: clamp(100px, 13vw, 168px);
   transform: scaleX(-1);
   opacity: .85;
   filter: drop-shadow(0 8px 20px rgba(0, 0, 0, .5));
@@ -1266,7 +1318,7 @@
 
 /* ═══ shared geometry for the art ═══════════════════════════════ */
 
-.countdown-shamsa, .ayat-arch, .noor-stage__shamsa { height: auto; }
+.countdown-shamsa, .ayat-arch { height: auto; }
 .std-emblem, .dresscode-orn, .closing-bloom--r, .closing-plate__art,
-.footer-ornament, .noor-orn, .story-corner, .event__star { height: auto; }
+.footer-ornament, .vesper-fern, .vesper-rose, .story-corner, .event__star { height: auto; }
 .envelope-lace { height: auto; }
