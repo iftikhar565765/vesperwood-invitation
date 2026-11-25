@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   VESPERWOOD · the candlelit letter — responsive
+   VESPERWOOD · the ivory rose — responsive
    ═══════════════════════════════════════════════════════════════ */
 
 @media (max-width: 1024px) {
@@ -20,20 +20,21 @@
 
   /* the letter stays fullscreen — the formula keeps its proportions;
      only the decorations tighten around it */
-  .vesper-lantern { width: clamp(2.8rem, 11vw, 4rem); top: -1.4rem; }
+  .vesper-lantern { width: clamp(3.4rem, 12.5vw, 5rem); top: -1.4rem; }
   .vesper-fern { width: clamp(6.4rem, 24vw, 9rem); }
-  .arch-card__inner { padding: 43cqw 6.5cqw 4cqw; }
+  .arch-crown { width: min(84%, 90vw); }
+  .arch-card__inner { padding: 47cqw 6.5cqw 4.4cqw; }
 }
 
 @media (max-width: 560px) {
-  /* the letter carries everything — only the rose sprays yield */
-  .vesper-rose { display: none; }
-  .vesper-lantern { width: clamp(2.5rem, 10vw, 3.4rem); top: -1.2rem; }
+  /* the letter carries everything — only the garlands yield */
+  .vesper-lantern { width: clamp(2.9rem, 10.5vw, 4rem); top: -1.2rem; }
   .vesper-lantern--l { left: .1rem; }
   .vesper-lantern--r { right: .1rem; }
   .vesper-fern { width: clamp(5.8rem, 22vw, 8rem); }
   .vesper-fern--bl { left: -1.6rem; }
   .vesper-fern--br { right: -1.6rem; }
+  .arch-crown { width: min(78%, 86vw); }
   .arch-card__invite { max-width: 92%; letter-spacing: .09em; }
   /* the fullscreen letter carries the address on phones too — it fits */
   .arch-card__inner { padding-bottom: 5.5cqw; }

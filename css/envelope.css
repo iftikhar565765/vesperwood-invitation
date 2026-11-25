@@ -136,19 +136,19 @@
   text-shadow: 0 2px 34px color-mix(in srgb, var(--champagne) 40%, transparent);
 }
 
-/* ── hanging fanous lanterns at the opening's shoulders ───────── */
+/* ── hanging rose garlands at the opening's shoulders ─────────── */
 .opening__lanterns { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
 .opening__lantern {
   position: absolute;
-  top: -1rem;
-  width: clamp(4.2rem, 8.5vw, 6.6rem);
+  top: -1.6rem;
+  width: clamp(5rem, 10vw, 7.6rem);
   transform-origin: 50% 0;
   animation: lantern-sway 7s ease-in-out infinite alternate;
-  filter: drop-shadow(0 16px 30px rgba(2, 12, 9, .55));
+  filter: drop-shadow(0 14px 26px rgba(20, 10, 8, .55)) brightness(1.05);
   user-select: none;
 }
 .opening__lantern--l { left: clamp(.6rem, 6vw, 8rem); }
-.opening__lantern--r { right: clamp(.6rem, 6vw, 8rem); animation-delay: -3.1s; }
+.opening__lantern--r { right: clamp(.6rem, 6vw, 8rem); animation-delay: -3.1s; transform: scaleX(-1); }
 
 /* ── the stage — where the letter rests ───────────────────────── */
 
@@ -161,11 +161,11 @@
   margin-bottom: clamp(1.3rem, 3.5vh, 2.2rem);
 }
 
-/* the shamsa rosette glowing behind the envelope */
+/* the eucalyptus wreath glowing behind the envelope */
 .envelope-lace {
   position: absolute;
   width: 128%;
-  opacity: .42;
+  opacity: .5;
   pointer-events: none;
   user-select: none;
 }
@@ -405,14 +405,14 @@
   /* woven emerald silk — a fine gold star-lattice over deep green,
      so the lifted flap reads as cloth, not print */
   background:
-    radial-gradient(130% 110% at 50% 0%, rgba(214, 232, 216, .3), transparent 62%),
+    radial-gradient(130% 110% at 50% 0%, rgba(233, 213, 206, .34), transparent 62%),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Cg fill='none' stroke='%23C0A052' stroke-opacity='.5'%3E%3Cpath d='M 22 4 L 26.6 15.4 L 38 20 L 26.6 24.6 L 22 36 L 17.4 24.6 L 6 20 L 17.4 15.4 Z'/%3E%3Ccircle cx='22' cy='20' r='2.2'/%3E%3Cpath d='M 0 20 H 6 M 38 20 H 44 M 22 0 V 4 M 22 36 V 40'/%3E%3C/g%3E%3C/svg%3E"),
     linear-gradient(184deg,
       color-mix(in srgb, var(--night) 88%, var(--champagne) 12%) 0%,
       var(--night-deep) 100%);
 }
 
-/* ── postage stamp — a dome and gate in carnelian on ivory ────── */
+/* ── postage stamp — a blush rose on ivory, gold-dashed edge ──── */
 
 .envelope__stamps {
   position: absolute;
@@ -422,13 +422,27 @@
   pointer-events: none;
 }
 .envelope__stamps .stamp {
-  width: clamp(2.9rem, 8.5vw, 3.5rem);
-  height: auto;
+  display: block;
+  width: clamp(3.1rem, 9vw, 3.7rem);
+  aspect-ratio: 5 / 6;
+  padding: .16rem;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, var(--paper-raised), var(--parchment));
+  border: 1px solid color-mix(in srgb, var(--champagne-soft) 50%, transparent);
+  outline: 1px dashed color-mix(in srgb, var(--champagne-soft) 62%, transparent);
+  outline-offset: -5px;
+  border-radius: 2px;
   transform: rotate(4deg);
-  filter: drop-shadow(0 2px 5px rgba(38, 27, 16, .4));
+  box-shadow: 0 2px 5px rgba(38, 27, 16, .4);
+}
+.stamp__rose {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* ── the gold dome seal ───────────────────────────────────────── */
+/* ── the blush wax seal ────────────────────────────────────────── */
 
 .envelope__seal-wrap {
   position: absolute;

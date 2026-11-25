@@ -675,15 +675,17 @@
     zafiran:  { burgundy: '#8C6B12', deep: '#6E5209', wine: '#4A3404', crimson: '#E3C268', champagne: '#D6A02E', soft: '#A87A1C', parchment: '#F8F0D8', ivory: '#FCF6E4', paper: '#FEFAEE', night: '#3A2B08', nightDeep: '#2A1D04', olive: '#6E6A2A', oliveDeep: '#524E1B', sage: '#B4B079', rose: '#EDD8A0', ink: '#2E2410', inkSoft: '#6E5C32', charcoal: '#A8986C' },
     marjan:   { burgundy: '#7A2E2E', deep: '#5E1F1F', wine: '#3E1212', crimson: '#D99292', champagne: '#C0A052', soft: '#96762F', parchment: '#F6E8DC', ivory: '#FAF1E4', paper: '#FEF8EE', night: '#38120F', nightDeep: '#260A08', olive: '#7A5A3A', oliveDeep: '#5C422A', sage: '#B49C86', rose: '#E8C0A8', ink: '#2C1410', inkSoft: '#6E4038', charcoal: '#A68478' },
     nilofar:  { burgundy: '#2A4A6B', deep: '#1C3854', wine: '#10233A', crimson: '#8FB4D9', champagne: '#C0A052', soft: '#96762F', parchment: '#E8EEF6', ivory: '#F1F4F9', paper: '#FAFBFE', night: '#0F1E33', nightDeep: '#081426', olive: '#3A6E6B', oliveDeep: '#285450', sage: '#8FB0B4', rose: '#C0D4E8', ink: '#121E2A', inkSoft: '#3E5468', charcoal: '#78889C' },
-    /* moods of the vesperwood — the default (pine candlelight) suite:
-       cathedral-pine nights, candle gold, ivory birch papers and a
-       stained-glass blue; every preset re-tunes the same six roles. */
+    /* moods of the wedding — the default (ivory rose) suite:
+       porcelain ivory papers, antique champagne gold, dusty blush
+       roses, sage eucalyptus and a deep rosewood dusk; every preset
+       re-tunes the same six roles. */
+    wedding:  { burgundy: '#9C6B5F', deep: '#7E5245', wine: '#3A2A25', crimson: '#E8CFC8', champagne: '#C2A468', soft: '#9C7F44', parchment: '#F3EDE0', ivory: '#F8F4EC', paper: '#FDFAF2', night: '#33231F', nightDeep: '#221511', olive: '#7D9470', oliveDeep: '#5C7350', sage: '#B3C2A4', rose: '#E9D5CE', ink: '#3C2C26', inkSoft: '#6E5A51', charcoal: '#AA9992' },
     vesperwood: { burgundy: '#20554A', deep: '#17423A', wine: '#0C2E28', crimson: '#D9E6DC', champagne: '#C9A24B', soft: '#7C6128', parchment: '#F1EDD9', ivory: '#F5F1E1', paper: '#FBF8EB', night: '#143830', nightDeep: '#0A1F1B', olive: '#466E56', oliveDeep: '#325341', sage: '#A8BFA9', rose: '#E4D8B8', ink: '#16332C', inkSoft: '#52695F', charcoal: '#96A89C' },
     zaytoon:  { burgundy: '#4A5E2A', deep: '#38491C', wine: '#24300E', crimson: '#A9C078', champagne: '#C6A24F', soft: '#9A7B36', parchment: '#F0F2DE', ivory: '#F6F8E8', paper: '#FCFEF2', night: '#1E2812', nightDeep: '#141C0A', olive: '#5E7A3A', oliveDeep: '#445C28', sage: '#A9B880', rose: '#D2E0A8', ink: '#1A2410', inkSoft: '#44582E', charcoal: '#8A9A6C' }
   };
 
   function applyTheme() {
-    var themeName = Object.prototype.hasOwnProperty.call(themePresets, cfg.theme) ? cfg.theme : 'vesperwood';
+    var themeName = Object.prototype.hasOwnProperty.call(themePresets, cfg.theme) ? cfg.theme : 'wedding';
     var colors = themePresets[themeName];
     var root = document.documentElement;
     root.style.setProperty('--burgundy', colors.burgundy);

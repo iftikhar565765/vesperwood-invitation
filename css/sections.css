@@ -1,12 +1,13 @@
 /* ═══════════════════════════════════════════════════════════════
-   VESPERWOOD · the candlelit letter in the wood — sections
+   VESPERWOOD · the ivory rose — sections
    ---------------------------------------------------------------
-   The hero is the invitation itself: a fullscreen ivory letter
-   with a soft arch top, carried on a pine-dark dusk. Lanterns,
-   ferns, wild roses and fireflies frame the letter from the
+   The hero is the invitation itself: a fullscreen porcelain
+   letter with a soft arch top, carried on a rosewood dusk. Real
+   rose garlands, garden-rose corners, a floral crown over the
+   apex and drifting petals of light frame the letter from the
    outside — the letter never becomes a decoration. The page is
-   ivory silk; the bands are pine lagoons with a whisper of
-   engraved lattice; every ornament is hairline gold.
+   porcelain ivory; the evening bands are rosewood dusk with a
+   whisper of candle gold.
    ═══════════════════════════════════════════════════════════════ */
 
 /* ═══ SHARED SCENE RHYTHM ═══════════════════════════════════════ */
@@ -42,10 +43,11 @@
 .display .script { font-style: normal; }
 
 /* ═══════════════════════════════════════════════════════════════
-   THE HERO — the candlelit letter in the wood
-   The letter is the invitation itself: a fullscreen ivory sheet
-   with a soft arch top. Every decoration — lanterns, ferns, roses,
-   fireflies — lives on the pine-dark ground AROUND the letter.
+   THE HERO — the ivory rose letter
+   The letter is the invitation itself: a fullscreen porcelain
+   sheet with a soft arch top. Every decoration — garlands, rose
+   corners, the floral crown, drifting light — lives on the
+   rosewood-dusk ground AROUND the letter.
    ═══════════════════════════════════════════════════════════════ */
 
 .scene--hero {
@@ -59,7 +61,7 @@
   align-content: center;
   background:
     radial-gradient(130% 100% at 50% 0%,
-      color-mix(in srgb, var(--olive) 16%, var(--night)) 0%,
+      color-mix(in srgb, var(--rose) 10%, var(--night)) 0%,
       var(--night) 40%,
       var(--night-deep) 100%);
 }
@@ -80,7 +82,7 @@
   place-items: center;
 }
 
-/* warm candlelight pooling behind the arch */
+/* warm blush candlelight pooling behind the arch */
 .vesper-halo {
   position: absolute;
   top: 4%;
@@ -89,54 +91,58 @@
   width: min(96vw, 1150px);
   aspect-ratio: 1 / 1;
   background: radial-gradient(closest-side,
-    rgba(232, 185, 106, .16),
-    rgba(232, 185, 106, .05) 55%,
+    rgba(232, 185, 146, .18),
+    rgba(220, 160, 130, .06) 55%,
     transparent 72%);
   pointer-events: none;
   z-index: 0;
 }
 
-/* candle lanterns hang just beside the arch, chain and all */
+/* rose garlands hang just beside the arch, stems and all */
 .vesper-lantern {
   position: absolute;
-  top: .2rem;
-  width: clamp(3.2rem, 7vw, 5.2rem);
+  top: -1.2rem;
+  width: clamp(5.2rem, 11vw, 8.6rem);
   z-index: 1;
   pointer-events: none;
   user-select: none;
   transform-origin: 50% 0;
   animation: lantern-sway 9s ease-in-out infinite alternate;
+  filter: drop-shadow(0 10px 26px rgba(20, 10, 8, .35));
 }
-.vesper-lantern--l { left: clamp(-4.6rem, -3.4vw, -2.8rem); }
-.vesper-lantern--r { right: clamp(-4.6rem, -3.4vw, -2.8rem); animation-delay: -3.2s; }
+.vesper-lantern--l { left: clamp(-7.8rem, -6.5vw, -5.4rem); }
+.vesper-lantern--r { right: clamp(-8.6rem, -7vw, -5.8rem); animation-delay: -5.6s; transform: scale(1.07); }
 @keyframes lantern-sway {
-  from { rotate: -2.2deg; }
-  to   { rotate: 2.2deg; }
+  from { rotate: -1.1deg; }
+  to   { rotate: 1.1deg; }
 }
 
-/* ferns rise at the letter's feet, tucked behind its corners */
+/* garden roses rise at the letter's feet, tucked behind its corners */
 .vesper-fern {
   position: absolute;
-  bottom: -1.6rem;
-  width: clamp(8.5rem, 16vw, 13.5rem);
-  z-index: 1;
+  bottom: -3.4rem;
+  width: clamp(9.5rem, 18.5vw, 15.5rem);
+  z-index: 3;
   pointer-events: none;
   user-select: none;
+  filter: drop-shadow(0 12px 30px rgba(20, 10, 8, .28)) brightness(1.04);
 }
-.vesper-fern--bl { left: clamp(-5.6rem, -4vw, -3.6rem); }
-.vesper-fern--br { right: clamp(-5.6rem, -4vw, -3.6rem); transform: scaleX(-1); }
+.vesper-fern--bl { left: clamp(-7.2rem, -5.8vw, -4.6rem); }
+.vesper-fern--br { right: clamp(-7.2rem, -5.8vw, -4.6rem); transform: scaleX(-1); }
 
-/* wild rose sprays rest against the arch shoulders */
-.vesper-rose {
+/* the floral crown straddles the letter's arch apex — the arc's
+   crown sits just above the paper, arms draping over the curve */
+.arch-crown {
   position: absolute;
-  top: 9%;
-  width: clamp(4.4rem, 9vw, 7rem);
-  z-index: 1;
+  top: -5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(76%, 74vw);
+  z-index: 3;
   pointer-events: none;
   user-select: none;
+  filter: drop-shadow(0 18px 40px rgba(20, 10, 8, .34));
 }
-.vesper-rose--tl { left: clamp(-4.2rem, -3vw, -2.4rem); }
-.vesper-rose--tr { right: clamp(-4.2rem, -3vw, -2.4rem); transform: scaleX(-1); }
 
 /* fireflies drifting through the dusk */
 .vesper-mote {
@@ -167,7 +173,7 @@
 .arch-card {
   position: relative;
   z-index: 2;
-  height: min(calc(100svh - 7.2rem), calc(100vw / .64));
+  height: min(calc(100svh - 10.4rem), calc(100vw / .64));
   aspect-ratio: 16 / 25;
   max-width: 100%;
   container-type: inline-size;
@@ -180,8 +186,8 @@
       var(--ivory) 46%,
       color-mix(in srgb, var(--parchment) 82%, var(--ivory) 18%) 100%);
   box-shadow:
-    0 34px 80px color-mix(in srgb, #06120E 52%, transparent),
-    0 6px 22px color-mix(in srgb, #06120E 34%, transparent),
+    0 44px 96px color-mix(in srgb, #1A0E0A 60%, transparent),
+    0 10px 30px color-mix(in srgb, #1A0E0A 40%, transparent),
     inset 0 0 0 1.5px color-mix(in srgb, var(--champagne) 38%, transparent);
   overflow: hidden;
 }
@@ -230,16 +236,17 @@
 .arch-card__inner > .arch-card__closing { margin-top: auto; }
 .arch-card__names { padding-top: .6cqw; }
 
-/* the monogram crest rides inside the arch */
+/* the gold rings crest rides inside the crown's open arc */
 .arch-card__crest {
   position: absolute;
-  top: 9cqw;
+  top: 17cqw;
   left: 50%;
   transform: translateX(-50%);
-  width: 14.5cqw;
+  width: 13cqw;
   z-index: 4;
   pointer-events: none;
   user-select: none;
+  filter: drop-shadow(0 3px 10px rgba(70, 45, 30, .22));
 }
 
 .arch-card__bismillah {
@@ -293,9 +300,9 @@
   align-items: center;
   margin-top: .2rem;
 }
-/* the divider carries its own fading hairlines — nothing else needed */
+/* the botanical flourish carries the rule — nothing else needed */
 .arch-card__rule i { display: none; }
-.arch-card__rule img { width: clamp(8rem, 34cqw, 14rem); height: auto; opacity: .95; }
+.arch-card__rule img { width: clamp(6.4rem, 21cqw, 8.6rem); height: auto; opacity: .96; }
 
 .arch-card__date { margin-top: 0; }
 .arch-card__date-week {
@@ -307,7 +314,7 @@
   display: flex;
   align-items: baseline;
   justify-content: center;
-  gap: .7rem;
+  gap: .55rem;
   margin-top: .2rem;
 }
 .arch-card__date-side {
@@ -327,7 +334,7 @@
   margin-top: .38rem;
   color: var(--gold-ink);
   font-size: clamp(.5rem, 1.95cqw, min(.62rem, .98svh));
-  letter-spacing: .18em;
+  letter-spacing: .21em;
 }
 .arch-card__nikah-sep { color: var(--gold-line); }
 
@@ -355,7 +362,7 @@
 .arch-card__closing {
   font-family: var(--font-editorial);
   font-style: italic;
-  font-size: clamp(.68rem, 2.6cqw, min(.94rem, 1.5svh));
+  font-size: clamp(.8rem, 2.9cqw, min(1.04rem, 1.6svh));
   color: var(--burgundy);
 }
 
@@ -372,10 +379,14 @@
   display: inline-flex;
   align-items: center;
   gap: .7rem;
-  color: var(--gold-bright);
-  font-size: .8rem;
+  color: var(--burgundy-deep);
+  font-size: .84rem;
   letter-spacing: .22em;
-  text-shadow: 0 1px 12px color-mix(in srgb, var(--night-deep) 85%, transparent);
+  opacity: .95;
+  padding: .46rem 1.15rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ivory) 78%, transparent);
+  box-shadow: 0 2px 14px color-mix(in srgb, #1A0E0A 14%, transparent);
 }
 .hero-scroll__arrow {
   width: 19px;
@@ -393,7 +404,7 @@
 
 .scene--story {
   overflow: hidden;
-  background: var(--ivory);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--rose) 26%, var(--ivory)) 0%, var(--ivory) 14%);
 }
 
 .story-corner {
@@ -450,6 +461,11 @@
   gap: .5rem;
   max-width: 15ch;
 }
+.story-caption__bloom {
+  width: 46px;
+  height: auto;
+  filter: drop-shadow(0 4px 10px rgba(70, 45, 30, .22));
+}
 .story-caption svg { width: 54px; height: 38px; }
 .story-caption span {
   font-family: var(--font-body);
@@ -458,20 +474,23 @@
   color: var(--ink-soft);
 }
 
-/* ═══ THE BLESSED VERSE — a lagoon of glazed tile ═══════════════ */
+/* ═══ THE BLESSED VERSE — a rosewood dusk ═══════════════════════ */
 
 .scene--ayat {
   overflow: hidden;
   background: linear-gradient(180deg, var(--night) 0%, var(--night-deep) 100%);
 }
 
-/* a whisper of girih tilework across the lagoon */
+/* a whisper of candle glow across the rosewood dusk */
 .scene--ayat::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("../assets/art/tiles-v4.png") center / 520px repeat;
-  opacity: .07;
+  background:
+    radial-gradient(46% 34% at 50% 30%,
+      color-mix(in srgb, var(--crimson) 14%, transparent) 0%, transparent 70%),
+    radial-gradient(60% 40% at 50% 108%,
+      color-mix(in srgb, var(--champagne) 10%, transparent) 0%, transparent 72%);
   pointer-events: none;
 }
 
@@ -487,7 +506,7 @@
   width: 100%;
   height: auto;
   opacity: .92;
-  filter: drop-shadow(0 6px 18px color-mix(in srgb, #06120E 45%, transparent));
+  filter: drop-shadow(0 6px 18px color-mix(in srgb, #1A0E0A 45%, transparent));
   pointer-events: none;
   user-select: none;
 }
@@ -507,20 +526,18 @@
   box-shadow:
     inset 0 0 0 1px color-mix(in srgb, var(--champagne) 40%, transparent),
     inset 0 0 64px rgba(0, 0, 0, .42),
-    0 26px 70px -30px color-mix(in srgb, #06120E 78%, transparent);
+    0 26px 70px -30px color-mix(in srgb, #1A0E0A 78%, transparent);
 }
 
 .ayat-plate__corner {
   position: absolute;
-  width: clamp(2.9rem, 7vw, 4.3rem);
-  opacity: .88;
+  width: clamp(3.1rem, 7vw, 4.4rem);
+  opacity: .94;
   pointer-events: none;
-  filter: saturate(.82) brightness(.96);
+  filter: drop-shadow(0 6px 14px rgba(20, 10, 8, .4));
 }
-.ayat-plate__corner--tl { top: -.9rem; left: -.9rem; }
-.ayat-plate__corner--tr { top: -.9rem; right: -.9rem; transform: scaleX(-1); }
-.ayat-plate__corner--bl { bottom: -.9rem; left: -.9rem; transform: scaleY(-1); }
-.ayat-plate__corner--br { bottom: -.9rem; right: -.9rem; transform: scale(-1, -1); }
+.ayat-plate__corner--tl { top: -1.1rem; left: -1.1rem; }
+.ayat-plate__corner--br { bottom: -1.1rem; right: -1.1rem; transform: scale(-1, -1); }
 
 .ayat-arabic {
   font-family: var(--font-editorial);
@@ -590,16 +607,17 @@
     inset 0 0 0 1px color-mix(in srgb, var(--champagne) 42%, transparent),
     inset 0 0 0 7px var(--paper-raised),
     inset 0 0 0 8px color-mix(in srgb, var(--burgundy) 22%, transparent),
-    0 30px 80px -34px color-mix(in srgb, #06120E 40%, transparent);
+    0 30px 80px -34px color-mix(in srgb, #1A0E0A 40%, transparent);
   padding: clamp(2.2rem, 6.5vw, 4.2rem) clamp(1.6rem, 6vw, 4.2rem);
 }
 
-/* the dome miniature — dawn light set into a lagoon plaque */
+/* the rose that crowns the save-the-date plate */
 .std-emblem {
-  width: clamp(7rem, 15vw, 10rem);
-  aspect-ratio: 3 / 2;
+  width: clamp(6.2rem, 13.5vw, 8.6rem);
+  aspect-ratio: 1;
   object-fit: contain;
   padding: .55rem 1rem;
+  filter: drop-shadow(0 8px 20px rgba(70, 45, 30, .2));
   background:
     radial-gradient(120% 120% at 50% 24%,
       color-mix(in srgb, var(--champagne) 16%, var(--night)) 0%,
@@ -608,7 +626,7 @@
   box-shadow:
     inset 0 0 0 1px color-mix(in srgb, var(--champagne) 52%, transparent),
     inset 0 0 0 4px color-mix(in srgb, var(--champagne) 10%, transparent),
-    0 12px 26px -10px color-mix(in srgb, #06120E 48%, transparent);
+    0 12px 26px -10px color-mix(in srgb, #1A0E0A 48%, transparent);
 }
 
 .std-title {
@@ -658,7 +676,7 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  filter: drop-shadow(0 8px 18px color-mix(in srgb, #06120E 36%, transparent));
+  filter: drop-shadow(0 8px 18px color-mix(in srgb, #1A0E0A 36%, transparent));
 }
 .std-seal .seal__initials,
 .closing-seal .seal__initials {
@@ -706,7 +724,7 @@
     inset 0 0 0 1px color-mix(in srgb, var(--burgundy) 30%, transparent),
     inset 0 0 0 5px var(--ivory),
     inset 0 0 0 6px color-mix(in srgb, var(--champagne) 34%, transparent),
-    0 16px 40px -22px color-mix(in srgb, #06120E 42%, transparent);
+    0 16px 40px -22px color-mix(in srgb, #1A0E0A 42%, transparent);
   text-align: left;
 }
 
@@ -725,7 +743,7 @@
     inset 0 0 0 1px color-mix(in srgb, var(--champagne) 62%, transparent),
     inset 0 0 0 5px color-mix(in srgb, var(--champagne) 10%, transparent),
     0 0 0 6px color-mix(in srgb, var(--champagne) 9%, transparent),
-    0 10px 22px -10px color-mix(in srgb, #06120E 55%, transparent);
+    0 10px 22px -10px color-mix(in srgb, #1A0E0A 55%, transparent);
 }
 .event__numeral {
   font-family: var(--font-editorial);
@@ -792,7 +810,7 @@
     inset 0 0 0 1px color-mix(in srgb, var(--champagne) 52%, transparent),
     inset 0 0 0 5px var(--ivory),
     inset 0 0 0 6px color-mix(in srgb, var(--champagne) 44%, transparent),
-    0 20px 48px -22px color-mix(in srgb, #06120E 48%, transparent);
+    0 20px 48px -22px color-mix(in srgb, #1A0E0A 48%, transparent);
 }
 .event--prime .event__name {
   font-size: clamp(1.45rem, 4.2vw, 2rem);
@@ -811,7 +829,7 @@
     inset 0 0 0 1px color-mix(in srgb, var(--burgundy) 34%, transparent),
     inset 0 0 0 6px var(--paper-raised),
     inset 0 0 0 7px color-mix(in srgb, var(--champagne) 26%, transparent),
-    0 20px 50px -26px color-mix(in srgb, #06120E 44%, transparent);
+    0 20px 50px -26px color-mix(in srgb, #1A0E0A 44%, transparent);
   text-align: center;
 }
 
@@ -866,7 +884,7 @@
     inset 0 0 0 1px rgba(0, 0, 0, .08),
     inset 0 0 0 3px var(--paper-raised),
     inset 0 0 0 4px color-mix(in srgb, var(--champagne) 40%, transparent),
-    0 8px 18px -8px color-mix(in srgb, #06120E 38%, transparent);
+    0 8px 18px -8px color-mix(in srgb, #1A0E0A 38%, transparent);
 }
 .swatch-name {
   font-family: var(--font-ui);
@@ -883,7 +901,7 @@
   gap: .7rem;
   margin-top: clamp(2rem, 5.5vh, 3rem);
 }
-.dresscode-orn { width: min(300px, 70%); height: auto; opacity: .92; }
+.dresscode-orn { width: min(230px, 54%); height: auto; opacity: .96; }
 .dresscode-label { color: var(--gold-ink); }
 .dresscode-title {
   font-family: var(--font-display);
@@ -908,13 +926,16 @@
   overflow: hidden;
 }
 
-/* the same whisper of girih tilework the other lagoons carry */
+/* the same whisper of candle glow the other dusk bands carry */
 .scene--itinerary::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("../assets/art/tiles-v4.png") center / 520px repeat;
-  opacity: .06;
+  background:
+    radial-gradient(50% 36% at 50% 18%,
+      color-mix(in srgb, var(--crimson) 12%, transparent) 0%, transparent 72%),
+    radial-gradient(64% 40% at 50% 112%,
+      color-mix(in srgb, var(--champagne) 9%, transparent) 0%, transparent 74%);
   pointer-events: none;
 }
 
@@ -1001,7 +1022,7 @@
   border-radius: 999px 999px 8px 8px;
   box-shadow:
     inset 0 0 0 1px color-mix(in srgb, var(--champagne) 40%, transparent),
-    0 20px 50px -24px color-mix(in srgb, #06120E 56%, transparent);
+    0 20px 50px -24px color-mix(in srgb, #1A0E0A 56%, transparent);
 }
 .venue-arch__medallion {
   position: absolute;
@@ -1159,7 +1180,7 @@
     inset 0 0 0 1px color-mix(in srgb, var(--champagne) 36%, transparent),
     inset 0 0 0 8px var(--paper-raised),
     inset 0 0 0 9px color-mix(in srgb, var(--burgundy) 20%, transparent),
-    0 30px 80px -32px color-mix(in srgb, #06120E 56%, transparent);
+    0 30px 80px -32px color-mix(in srgb, #1A0E0A 56%, transparent);
   text-align: center;
 }
 
@@ -1179,10 +1200,10 @@
   color: var(--ink-soft);
 }
 
-.rsvp-ornament { max-width: 340px; margin: 1.4rem auto 0; }
+.rsvp-ornament { max-width: 250px; margin: 1.4rem auto 0; }
 .rsvp-ornament__img { width: 100%; height: auto; display: block; }
 
-/* ═══ A CLOSING DUA — beneath the dawn-lit dome ═════════════════ */
+/* ═══ A CLOSING BLESSING — beneath the trailing roses ═══════════ */
 
 .scene--closing {
   overflow: hidden;
@@ -1192,7 +1213,7 @@
 .closing-plate {
   position: relative;
   z-index: 1;
-  width: min(340px, 70%);
+  width: min(400px, 76%);
   margin: 0 auto clamp(22px, 4vh, 36px);
   pointer-events: none;
 }
@@ -1217,7 +1238,7 @@
   position: absolute;
   top: 4%;
   right: 2.5%;
-  width: clamp(100px, 13vw, 168px);
+  width: clamp(150px, 19vw, 240px);
   transform: scaleX(-1);
   opacity: .85;
   filter: drop-shadow(0 8px 20px rgba(0, 0, 0, .5));
@@ -1306,7 +1327,7 @@
   justify-items: center;
   gap: 8px;
 }
-.footer-ornament { width: min(420px, 84%); height: auto; display: block; opacity: .95; }
+.footer-ornament { width: min(240px, 60%); height: auto; display: block; opacity: .96; }
 .footer .small { color: var(--night-faint); }
 .footer-credit a {
   color: var(--champagne-soft);

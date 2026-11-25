@@ -1,43 +1,43 @@
 /* ═══════════════════════════════════════════════════════════════
-   VESPERWOOD · variables.css — the Aldergrove design system
+   VESPERWOOD · variables.css — the ivory rose design system
    ---------------------------------------------------------------
-   Built from four materials of the vesper light: turquoise glaze,
-   cobalt arabesque, saffron gold, and ivory paper. The hero is a
-   dawn sky over the Registan; the bands are lagoons of glazed
-   tile. Every colour token is overwritten at runtime by main.js
-   applyTheme(); defaults mirror the vesperwood (turquoise) preset.
+   Built from the wedding day's own materials: porcelain ivory
+   papers, antique champagne gold, dusty blush roses, sage
+   eucalyptus and a deep rosewood dusk for the evening scenes.
+   Every colour token is overwritten at runtime by main.js
+   applyTheme(); defaults mirror the wedding preset.
    ═══════════════════════════════════════════════════════════════ */
 
 :root {
-  /* ── the vesperwood palette (Aldergrove dawn) ─────────────────── */
-  --burgundy:      #20554A;   /* deep teal — primary accent        */
-  --burgundy-deep: #17423A;   /* compressed teal                   */
-  --wine:          #0C2E28;   /* deep lagoon — dark accents        */
-  --crimson:       #D9E6DC;   /* pale azure — light accent on dark */
-  --champagne:     #C9A24B;   /* saffron gold                      */
-  --champagne-soft:#7C6128;   /* burnished saffron                 */
-  --gold-ink:      #6D5518;   /* deep saffron — TEXT on light (4.5+) */
-  --parchment:     #F1EDD9;   /* warm silk cream                   */
-  --ivory:         #F5F1E1;   /* ivory page ground                 */
-  --paper-raised:  #FBF8EB;   /* raised card paper                 */
-  --night:         #143830;   /* lagoon teal (dark bands)          */
-  --night-deep:    #0A1F1B;   /* deep lapis lagoon                 */
-  --olive:         #466E56;   /* sea green                         */
-  --olive-deep:    #325341;
-  --sage:          #A8BFA9;   /* pale sea                          */
-  --rose:          #E4D8B8;   /* saffron cream                     */
-  --ink:           #16332C;   /* lapis ink (calligraphy black)     */
-  --ink-soft:      #52695F;   /* sea umber                         */
-  --charcoal:      #96A89C;
+  /* ── the wedding palette (the ivory rose) ─────────────────────── */
+  --burgundy:      #9C6B5F;   /* rosewood — primary accent          */
+  --burgundy-deep: #7E5245;   /* pressed rosewood                   */
+  --wine:          #3A2A25;   /* deep rosewood — dark accents       */
+  --crimson:       #E8CFC8;   /* blush — light accent on dark       */
+  --champagne:     #C2A468;   /* antique gold                       */
+  --champagne-soft:#9C7F44;   /* burnished gold                     */
+  --gold-ink:      #6B5423;   /* deep gold — TEXT on light (4.5+)   */
+  --parchment:     #F3EDE0;   /* warm silk cream                    */
+  --ivory:         #F8F4EC;   /* porcelain ivory page ground        */
+  --paper-raised:  #FDFAF2;   /* raised card paper                  */
+  --night:         #33231F;   /* rosewood night (dark scenes)       */
+  --night-deep:    #221511;   /* deep rosewood dusk                 */
+  --olive:         #7D9470;   /* sage eucalyptus                    */
+  --olive-deep:    #5C7350;   /* deep sage                          */
+  --sage:          #B3C2A4;   /* pale sage                          */
+  --rose:          #E9D5CE;   /* blush cream                        */
+  --ink:           #3C2C26;   /* rosewood ink (calligraphy black)   */
+  --ink-soft:      #6E5A51;   /* warm umber                         */
+  --charcoal:      #AA9992;
 
-  /* ── emerald-glow fallbacks from the old base, re-lit gold ── */
+  /* ── blush-glow fallbacks from the old base, re-lit gold ─── */
   --emerald-glow:  var(--champagne);
   --emerald-soft:  var(--champagne);
   --emerald:       var(--burgundy);
 
   /* ── derived golds ────────────────────────────────────────── */
   --gold:          var(--champagne);
-  --gold-bright:   color-mix(in srgb, var(--champagne) 66%, #F3E3B4);
+  --gold-bright:   color-mix(in srgb, var(--champagne) 66%, #F3E7C6);
   --gold-dim:      color-mix(in srgb, var(--champagne) 58%, var(--ink) 14%);
   --gold-line:     color-mix(in srgb, var(--champagne) 52%, transparent);
   --gold-faint:    color-mix(in srgb, var(--champagne) 26%, transparent);
@@ -48,7 +48,7 @@
   --paper-wash:    color-mix(in srgb, var(--wine) 3%, var(--paper-raised));
   --cream-deep:    color-mix(in srgb, var(--parchment) 62%, var(--ivory) 38%);
 
-  /* ── the vesper light's own derived tones — dawn over Registan ─ */
+  /* ── the wedding day's own derived tones — rose dusk ────── */
   --sky-1:         var(--night-deep);
   --sky-2:         color-mix(in srgb, var(--night) 84%, var(--olive) 16%);
   --glass:         color-mix(in srgb, var(--night) 55%, transparent);
@@ -60,7 +60,7 @@
   --sunset-soft:   color-mix(in srgb, var(--parchment) 58%, transparent);
   --night-ink:     color-mix(in srgb, var(--parchment) 66%, transparent);
   --night-faint:   color-mix(in srgb, var(--parchment) 48%, transparent);
-  --ember:         color-mix(in srgb, var(--champagne) 40%, #F3E3B4 60%);
+  --ember:         color-mix(in srgb, var(--champagne) 40%, #F3E7C6 60%);
 
   /* ── luxury hardware — hairlines and soft shadow layers ───── */
   --line:          color-mix(in srgb, var(--champagne) 44%, transparent);
@@ -75,10 +75,9 @@
                    0 14px 30px color-mix(in srgb, var(--burgundy) 16%, transparent);
 
   /* ── type ───────────────────────────────────────────────────
-     Italiana — the silk-road display voice · Cormorant — the
+     Italiana — the engraved display voice · Cormorant — the
      editorial prose · Alex Brush — the romantic hand · EB
-     Garamond — the body · Jost — labels · Amiri — the Quranic
-     voice.                                                      */
+     Garamond — the body · Jost — labels.                          */
   --font-editorial: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;
   --font-display:   'Italiana', 'Cormorant Garamond', 'Georgia', serif;
   --font-script:    'Alex Brush', 'Segoe Script', 'Apple Chancery', cursive;
