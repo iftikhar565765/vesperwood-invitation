@@ -301,3 +301,16 @@ body.intro-pending #main-content { opacity: 0; pointer-events: none; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* ═══ PERFORMANCE — the invisible machinery of smoothness ═══════ */
+
+/* parallax layers promote once; the compositor does the rest */
+[data-drift] { will-change: transform; }
+
+/* offscreen scenes hold their breath — no idle animation frames */
+.scene-idle,
+.scene-idle *,
+.scene-idle *::before,
+.scene-idle *::after {
+  animation-play-state: paused !important;
+}

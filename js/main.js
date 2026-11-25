@@ -185,8 +185,37 @@
     }
   };
 
+  
+  /* Two waves of type: the families the default design needs ship in the
+     document head; a saved theme that picks anything else fetches just
+     those families on demand — a guest never downloads the whole case. */
+  var FONT_SPECS = {"Marcellus": "", "Pinyon Script": "", "Cormorant Garamond": "ital,wght@0,300;0,400;0,500;1,300;1,400", "Great Vibes": "", "EB Garamond": "ital,wght@0,400;0,500;1,400", "Caveat": "", "Jost": "wght@300;400;600", "Amiri": "ital,wght@0,400;0,700;1,400", "Aref Ruqaa": "wght@400;700", "Bodoni Moda": "ital,opsz,wght@0,6..96,400;1,6..96,400", "DM Serif Display": "", "Italiana": "", "Karla": "", "Lora": "", "Montserrat": "wght@400;600", "Parisienne": "", "Playfair Display": "wght@400;500", "Prata": "", "Rozha One": "", "Libre Caslon Text": "", "Cardo": "", "Spectral": "wght@300;400", "Crimson Pro": "wght@300;400", "Shadows Into Light": "", "Homemade Apple": "", "Nothing You Could Do": "", "DM Sans": "wght@400;600", "Outfit": "wght@300;400", "Cedarville Cursive": "", "Alex Brush": "", "Allura": "", "Tangerine": "wght@400", "Libre Baskerville": "", "Mrs Saint Delafield": "", "Herr Von Muellerhoff": "", "Syne": "wght@500;700", "Work Sans": "wght@300;400", "Source Sans 3": "wght@300;400"};
+  var FONT_LOADED = {"Alex Brush": true, "Amiri": true, "Aref Ruqaa": true, "Caveat": true, "Cormorant Garamond": true, "EB Garamond": true, "Italiana": true, "Jost": true, "Syne": true};
+
+  function ensureFonts(families) {
+    var missing = [];
+    families.forEach(function (family) {
+      if (Object.prototype.hasOwnProperty.call(FONT_SPECS, family) &&
+          !Object.prototype.hasOwnProperty.call(FONT_LOADED, family)) {
+        FONT_LOADED[family] = true;
+        missing.push(family);
+      }
+    });
+    if (!missing.length) return;
+    var href = 'https://fonts.googleapis.com/css2?' + missing.map(function (family) {
+      var spec = FONT_SPECS[family];
+      return 'family=' + family.replace(/ /g, '+') + (spec ? ':' + spec : '');
+    }).join('&') + '&display=swap';
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = href;
+    document.head.appendChild(link);
+  }
+
   function applyFonts() {
     var fonts = cfg.fonts || {};
+    var resolved = {};
+    var needed = [];
     Object.keys(fontFamilies).forEach(function (role) {
       var choices = fontFamilies[role];
       var selected = choices[fonts[role]] || choices[{
@@ -196,7 +225,13 @@
         hand: 'kalam',
         body: 'halant'
       }[role]];
-      document.documentElement.style.setProperty('--font-' + role, selected);
+      resolved[role] = selected;
+      var family = selected.replace(/^'|,.*/g, '');
+      if (needed.indexOf(family) < 0) needed.push(family);
+    });
+    ensureFonts(needed);
+    Object.keys(resolved).forEach(function (role) {
+      document.documentElement.style.setProperty('--font-' + role, resolved[role]);
     });
   }
 
@@ -1197,4 +1232,18 @@
     });
   }
 
+})();
+
+
+/* ══ 11 · SCENE IDLE — offscreen scenes hold their breath ════════ */
+(function initSceneIdle() {
+  if (!('IntersectionObserver' in window)) return;
+  var scenes = document.querySelectorAll('.scene, .opening');
+  if (!scenes.length) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      entry.target.classList.toggle('scene-idle', !entry.isIntersecting);
+    });
+  }, { rootMargin: '25% 0px 25% 0px' });
+  scenes.forEach(function (scene) { io.observe(scene); });
 })();

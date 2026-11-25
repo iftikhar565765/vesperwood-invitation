@@ -31,7 +31,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Great+Vibes&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Caveat&family=Jost:wght@300;400;600&family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=DM+Serif+Display&family=Italiana&family=Karla&family=Lora&family=Montserrat:wght@400;600&family=Parisienne&family=Playfair+Display:wght@400;500&family=Prata&family=Rozha+One&family=Libre+Caslon+Text&family=Cardo&family=Spectral:wght@300;400&family=Crimson+Pro:wght@300;400&family=Shadows+Into+Light&family=Homemade+Apple&family=Nothing+You+Could+Do&family=DM+Sans:wght@400;600&family=Outfit:wght@300;400&family=Cedarville+Cursive&family=Alex+Brush&family=Allura&family=Tangerine:wght@400&family=Libre+Baskerville&family=Mrs+Saint+Delafield&family=Herr+Von+Muellerhoff&family=Syne:wght@500;700&family=Work+Sans:wght@300;400&family=Source+Sans+3:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Caveat&family=Jost:wght@300;400;600&family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Italiana&family=Alex+Brush&family=Syne:wght@500;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/base.css">
@@ -104,7 +104,7 @@
       <p class="opening__names script" data-content="couple.names" data-element-key="opening-names">Wren &amp; Theodore</p>
 
       <div class="envelope-stage">
-        <img class="envelope-lace" src="assets/art/wed-wreath-wed.webp" alt="" aria-hidden="true" data-element-key="envelope-lace" data-drift="0.4">
+        <img class="envelope-lace" src="assets/art/wed-wreath-wed.webp" alt="" aria-hidden="true" data-element-key="envelope-lace" data-drift="0.4" loading="eager" decoding="async" fetchpriority="high">
         <div class="envelope-shadow" aria-hidden="true" data-element-key="envelope-shadow"></div>
 
         <!-- The entire envelope is one accessible control -->
@@ -116,7 +116,7 @@
             <span class="envelope__letter-inner">
               <span class="envelope__letter-mono script" data-content="couple.initials">W · T</span>
               <span class="envelope__letter-names" data-content="couple.names">Wren &amp; Theodore</span>
-              <img class="envelope__letter-sprig" src="assets/art/wed-divider-flourish.webp" alt="" aria-hidden="true">
+              <img class="envelope__letter-sprig" src="assets/art/wed-divider-flourish.webp" alt="" aria-hidden="true" loading="eager" decoding="async">
               <span class="envelope__letter-date" data-content="wedding.numerals">19 · 06 · 2027</span>
             </span>
           </span>
@@ -195,7 +195,7 @@
               </h1>
 
               <span class="arch-card__rule reveal" aria-hidden="true">
-                <i></i><img src="assets/art/wed-divider-flourish.webp" alt="" aria-hidden="true"><i></i>
+                <i></i><img src="assets/art/wed-divider-flourish.webp" alt="" aria-hidden="true" loading="eager" decoding="async"><i></i>
               </span>
 
               <div class="arch-card__date reveal" role="group" aria-label="The wedding date">
@@ -222,7 +222,7 @@
           <img class="vesper-lantern vesper-lantern--r" src="assets/art/wed-garland-hang.webp" alt="" aria-hidden="true" loading="eager" decoding="async" data-element-key="hero-lantern-r" data-drift="0.9">
           <img class="vesper-fern vesper-fern--bl" src="assets/art/wed-rose-corner.webp" alt="" aria-hidden="true" loading="eager" decoding="async" data-element-key="hero-fern-bl">
           <img class="vesper-fern vesper-fern--br" src="assets/art/wed-rose-corner.webp" alt="" aria-hidden="true" loading="eager" decoding="async" data-element-key="hero-fern-br">
-          <img class="arch-crown" src="assets/art/wed-arch-crown.webp" alt="" aria-hidden="true" loading="eager" decoding="async" data-element-key="hero-crown">
+          <img class="arch-crown" src="assets/art/wed-arch-crown.webp" alt="" aria-hidden="true" loading="eager" decoding="async" data-element-key="hero-crown" fetchpriority="high">
           </div>
         </div>
 
@@ -359,7 +359,7 @@
 
           <li class="event event--prime reveal" data-element-key="detail-nikah">
             <span class="event__node event__node--prime" aria-hidden="true">
-              <img class="event__star" src="assets/art/wed-wreath-wed.webp" alt="" aria-hidden="true">
+              <img class="event__star" src="assets/art/wed-wreath-wed.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
             </span>
             <div class="event__card event__card--prime">
               <span class="event__index" aria-hidden="true">ii</span>

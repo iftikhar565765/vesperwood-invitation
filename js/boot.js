@@ -74,7 +74,15 @@
 
   function pollPublishedConfig() {
     if (!inviteId) return;
-    window.setInterval(function () {
+    /* Poll briskly at first (the couple may still be editing), then settle
+       into a slow heartbeat. The poll sleeps whenever the tab is hidden —
+       a background tab must never cost battery or bandwidth. */
+    var ticks = 0;
+    (function tick() {
+      var delay = ticks < 60 ? 3000 : 30000;
+      window.setTimeout(tick, delay);
+      if (document.hidden) return;
+      ticks += 1;
       requestRevision().then(function (version) {
         if (version.revision <= revision) return null;
         return requestPublishedConfig().then(function (result) {
@@ -87,7 +95,7 @@
       }).catch(function () {
         // Keep the last successfully loaded version if a poll is temporarily unavailable.
       });
-    }, 3000);
+    })();
   }
 
   function startSite() {
