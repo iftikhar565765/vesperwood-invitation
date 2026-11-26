@@ -15,7 +15,9 @@ body { margin:0; width:1200px; height:630px; overflow:hidden; background:#221511
 .sr { right:-46px; top:-64px; width:330px; transform:scaleX(-1) rotate(4deg); }
 .wreath { position:relative; width:226px; height:226px; }
 .init { position:absolute; inset:0; display:grid; place-items:center;
-  font-family:'Allura',cursive; font-size:58px; color:#eedcae; text-shadow:0 2px 14px rgba(26,14,10,.4); }
+  font-family:'Allura',cursive; font-size:50px; color:#eedcae; text-shadow:0 2px 14px rgba(26,14,10,.4); }
+.wreath::before { content:''; position:absolute; left:50%; top:50%; width:150px; height:150px;
+  transform:translate(-50%,-50%); border-radius:50%; background:radial-gradient(circle, rgba(34,21,17,.72) 0%, rgba(34,21,17,.38) 62%, transparent 82%); }
 .names { font-family:'Italiana',serif; font-size:64px; letter-spacing:.05em; color:#f8f2e6; margin-top:14px; }
 .names .amp { font-family:'Allura',cursive; color:#d9bc7f; font-size:56px; padding:0 16px; }
 .line { width:430px; height:1px; margin:20px 0 18px;

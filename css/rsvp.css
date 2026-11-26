@@ -39,7 +39,7 @@
   transition: border-color .25s var(--ease), box-shadow .25s var(--ease);
   appearance: none;
 }
-.field textarea { resize: vertical; min-height: 60px; }
+.field textarea { resize: none; min-height: 60px; }
 
 .field input:focus,
 .field textarea:focus {

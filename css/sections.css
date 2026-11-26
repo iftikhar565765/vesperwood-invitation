@@ -617,16 +617,17 @@
   aspect-ratio: 1;
   object-fit: contain;
   padding: .55rem 1rem;
-  filter: drop-shadow(0 8px 20px rgba(70, 45, 30, .2));
+  filter: drop-shadow(0 8px 20px rgba(70, 45, 30, .18));
   background:
     radial-gradient(120% 120% at 50% 24%,
-      color-mix(in srgb, var(--champagne) 16%, var(--night)) 0%,
-      var(--night-deep) 68%);
+      color-mix(in srgb, var(--parchment) 90%, white 10%) 0%,
+      color-mix(in srgb, var(--champagne) 16%, var(--parchment)) 70%);
   border-radius: 999px;
   box-shadow:
-    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 52%, transparent),
-    inset 0 0 0 4px color-mix(in srgb, var(--champagne) 10%, transparent),
-    0 12px 26px -10px color-mix(in srgb, #1A0E0A 48%, transparent);
+    inset 0 0 0 1px color-mix(in srgb, var(--champagne-soft) 48%, transparent),
+    inset 0 0 0 4px color-mix(in srgb, var(--champagne) 8%, transparent),
+    inset 0 2px 10px color-mix(in srgb, var(--wine) 12%, transparent),
+    inset 0 -3px 9px color-mix(in srgb, var(--champagne) 30%, transparent);
 }
 
 .std-title {
@@ -737,28 +738,30 @@
   border-radius: 999px;
   background:
     radial-gradient(120% 120% at 50% 22%,
-      color-mix(in srgb, var(--champagne) 26%, var(--night)) 0%,
-      var(--night-deep) 74%);
+      color-mix(in srgb, var(--parchment) 92%, white 8%) 0%,
+      color-mix(in srgb, var(--champagne) 14%, var(--parchment)) 72%);
   box-shadow:
-    inset 0 0 0 1px color-mix(in srgb, var(--champagne) 62%, transparent),
-    inset 0 0 0 5px color-mix(in srgb, var(--champagne) 10%, transparent),
-    0 0 0 6px color-mix(in srgb, var(--champagne) 9%, transparent),
-    0 10px 22px -10px color-mix(in srgb, #1A0E0A 55%, transparent);
+    inset 0 0 0 1px color-mix(in srgb, var(--champagne-soft) 46%, transparent),
+    inset 0 0 0 5px color-mix(in srgb, var(--champagne) 7%, transparent),
+    inset 0 2px 9px color-mix(in srgb, var(--wine) 14%, transparent),
+    inset 0 -3px 8px color-mix(in srgb, var(--champagne) 30%, transparent),
+    0 0 0 6px color-mix(in srgb, var(--champagne) 8%, transparent);
 }
 .event__numeral {
   font-family: var(--font-editorial);
   font-style: italic;
-  font-size: clamp(1.05rem, 3vw, 1.3rem);
+  font-size: clamp(1.15rem, 3.2vw, 1.45rem);
   letter-spacing: .08em;
-  color: var(--gilding);
+  color: var(--gold-ink);
   line-height: 1;
+  text-shadow: 0 1px 0 color-mix(in srgb, var(--ivory) 60%, transparent);
 }
 .event__node--prime { overflow: visible; }
 .event__star {
-  width: 118%;
+  width: 86%;
   height: auto;
-  margin: -9%;
-  filter: drop-shadow(0 0 14px color-mix(in srgb, var(--champagne) 55%, transparent));
+  margin: 0;
+  filter: drop-shadow(0 3px 8px color-mix(in srgb, var(--burgundy) 22%, transparent));
 }
 
 .event__card { min-width: 0; }
@@ -1078,18 +1081,6 @@
   z-index: 0;
 }
 
-.countdown-shamsa {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(72%, 520px);
-  opacity: .3;
-  pointer-events: none;
-  user-select: none;
-  -webkit-mask-image: radial-gradient(closest-side, #000 62%, rgba(0,0,0,.55) 78%, transparent 96%);
-  mask-image: radial-gradient(closest-side, #000 62%, rgba(0,0,0,.55) 78%, transparent 96%);
-}
 
 .scene--countdown .scene-body { position: relative; z-index: 1; }
 
@@ -1158,13 +1149,14 @@
 
 .watermark-script {
   position: absolute;
-  right: -1rem;
-  bottom: 2%;
+  right: 1.5rem;
+  bottom: 9%;
   font-family: var(--font-editorial);
   font-style: italic;
-  font-size: clamp(6rem, 20vw, 13rem);
+  font-size: clamp(3.6rem, 10vw, 6.4rem);
   line-height: 1;
-  color: color-mix(in srgb, var(--burgundy) 9%, transparent);
+  letter-spacing: .04em;
+  color: color-mix(in srgb, var(--burgundy) 5.5%, transparent);
   pointer-events: none;
   user-select: none;
 }
@@ -1220,10 +1212,10 @@
 .closing-plate::before {
   content: "";
   position: absolute;
-  inset: -20% -34%;
+  inset: -10% -18%;
   background: radial-gradient(50% 46% at 50% 58%,
-    color-mix(in srgb, var(--champagne) 24%, transparent) 0%,
-    color-mix(in srgb, var(--champagne) 9%, transparent) 44%,
+    color-mix(in srgb, var(--champagne) 11%, transparent) 0%,
+    color-mix(in srgb, var(--champagne) 4%, transparent) 46%,
     transparent 72%);
   z-index: -1;
 }
@@ -1339,7 +1331,7 @@
 
 /* ═══ shared geometry for the art ═══════════════════════════════ */
 
-.countdown-shamsa, .ayat-arch { height: auto; }
+.ayat-arch { height: auto; }
 .std-emblem, .dresscode-orn, .closing-bloom--r, .closing-plate__art,
 .footer-ornament, .vesper-fern, .vesper-rose, .story-corner, .event__star { height: auto; }
 .envelope-lace { height: auto; }
