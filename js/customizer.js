@@ -111,7 +111,6 @@
     'venue-arch': 'Venue arch',
     'countdown-shamsa': 'Countdown medallion',
     'countdown-clock': 'Countdown clock',
-    'rsvp-watermark': 'RSVP watermark',
     'rsvp-ornament': 'RSVP ornament',
     'closing-swag': 'Closing dome plate',
     'closing-swag-roses': 'Closing roses',

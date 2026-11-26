@@ -333,7 +333,6 @@
     'day-words': 'The garland of moments',
     'venue-ornament': 'The golden mandap arch',
     'venue-arch': 'The marble arch',
-    'rsvp-watermark': 'RSVP watermark',
     'rsvp-ornament': 'RSVP ornament',
     'countdown-clock': 'Countdown clock',
     'countdown-wreath': 'The shamsa rosette',
